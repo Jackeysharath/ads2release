@@ -1,0 +1,134 @@
+<section id="services" class="module">
+  <div class="container">
+    <div class="row multi-columns-row">
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="box-icon text-center">
+          <img src="assets/images/newspaper.png" alt="" class="">
+          <h4>CLASSIFIED TEXT AD</h4>
+          <p>This the most cost effective form of advertising in Newspaper. Ad appears in Classified section in simple running text format. Charges per Line/Word. Enhancement option available.</p>
+          <a href="javascript:void(0)" class="btn btn-xs btn-outline btn-info" (click)="getType()">Book Now</a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="box-icon text-center">
+          <img src="assets/images/newspaper.png" alt="" class="">
+          <h4>CLASSIFIED DISPLAY AD</h4>
+          <p>The second cost effective option of newspaper advertising. Expensive than running text ad but more visible. Design your ad using Logo/Images. Rates are charged per sq.cm.</p>
+          <a href="#" class="btn btn-xs btn-outline btn-info">Book Now</a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="box-icon text-center">
+          <img src="assets/images/newspaper.png" alt="" class="">
+          <h4>DISPLAY AD</h4>
+          <p>The most costlier option in newspaper advertising but with freedom to customize Ad Height & Width with Page Choice (Front / Back / Page 3) appearing beside editorial content.</p>
+          <a href="#" class="btn btn-xs btn-outline btn-info">Book Now</a>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" *ngFor="let item of paperTypes">
+        <div class="box-icon text-center">
+          <img src="assets/images/newspaper.png" alt="" class="">
+          <h4>{{item.name}}</h4>
+          <p>{{item.desc}}</p>
+          <a href="javascript:void(0)" class="btn btn-xs btn-outline btn-info" (click)="selType(item)">Book Now</a>
+        </div>
+      </div>
+      
+    </div><!-- .row -->
+  </div>
+</section>
+<!-- END Services -->
+
+<!-- Newspapers -->
+<section class="module-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Paper CAROUSEL -->
+        <div class="clients-carousel">
+          <a href="#"><img src="assets/images/paper1.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper2.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper3.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper4.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper5.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper6.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper1.jpg" alt=""></a>
+          <a href="#"><img src="assets/images/paper2.jpg" alt=""></a>
+        </div>
+        <!-- END Paper CAROUSEL -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END Newspapers -->
+
+
+<!-- TABS -->
+<section class="module" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="module-header text-center">
+          <h2 class="montserrat text-uppercase">About us</h2>
+          <p class="lead divider-line">An eye for detail makes our works beautiful.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+
+        <p>Now you don't have to physically travel to the newspaper/ representative office to release an ad. Nor you have to manually write ad messages on forms. Do all this and more at murthymedia.com, from the comforts of your home, office or even while you are travelling. What's more, you can choose from a number of publications that suit your target audience profile, select the category that suits your classified ad, and make payment through a secure gateway. Go ahead, experience the easy, effortless way to publish an ad, now!</p>
+
+      </div>
+    </div><!-- .row -->
+  </div>
+</section>
+<!-- END TABS -->
+
+<!-- TESTIMONIALS -->
+<section class="module bg-brand-alfa-60 color-white parallax" data-background="assets/images/dark_wood.png">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+
+        <div class="slider-testimonial">
+
+          <!-- TESTIMONIAL -->
+          <div>
+            <div class="testimonial-image">
+              <img src="assets/images/avatar/2.jpg" alt="">
+              <div class="cd-author-info">
+                <h5 class="text-700 m-0">Mark Stone</h5>
+                Corporation Name, Inc
+              </div>
+            </div>
+            <div class="testimonial">
+              The office assistant was the boss's man, spineless, and with no understanding. What about if he reported sick? But that would be extremely strained and suspicious as in fifteen years of service Gregor had never once yet been ill.
+            </div>
+          </div>
+          <!-- END TESTIMONIAL -->
+
+          <!-- TESTIMONIAL -->
+          <div>
+            <div class="testimonial-image">
+              <img src="assets/images/avatar/2.jpg" alt="">
+              <div class="cd-author-info">
+                <h5 class="text-700 m-0">Andy River</h5>
+                Corporation Name, Inc
+              </div>
+            </div>
+            <div class="testimonial">
+              The office assistant was the boss's man, spineless, and with no understanding. What about if he reported sick? But that would be extremely strained and suspicious as in fifteen years of service Gregor had never once yet been ill.
+            </div>
+          </div>
+          <!-- END TESTIMONIAL -->
+
+        </div>
+
+      </div>
+    </div><!-- .row -->
+
+  </div>
+</section>
+<!-- END TESTIMONIALS -->

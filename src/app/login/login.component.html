@@ -1,0 +1,252 @@
+<section class="pageheader-default">
+  <div class="semitransparentbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tabs tabs-style-linemove5">
+                                  <nav>
+                                      <ul class="nav nav-pills">
+                                          <li class=""><a class="nav-linka tab1-1 completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                          <li class=""><a class="nav-linka tab2-2  active completed" href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                          <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
+                                      </ul>
+                                  </nav>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!-- WRAPPER -->
+<div class="wrapper wrapsemibox">
+
+  
+  <div class="semiboxshadow text-center">
+    <img src="img/shp.png" class="img-responsive" alt="">
+  </div>
+  <!-- ABOUT -->
+  <section class="container">
+    <div class="heading mt30">
+      <h4><i class="ion ion-person"></i>Please Provide the Following Mandatory Details :</h4>
+    </div>	
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="row">
+          <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">&nbsp;</label>
+            </div>
+          <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+            <div class="form-group">
+              <div class="m-radio-inline">
+                <label class="m-radio m-radio--bold">
+                  <input type="radio" name="user_type" value="1" (click)="userCheck()" id="new_user" checked> New User
+                  <span></span>
+                </label>
+                <label class="m-radio m-radio--bold">
+                  <input type="radio" name="user_type" value="2" (click)="userCheck()" id="exist_user"> Existing User
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="newuser-content">
+          <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Name :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Email :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="email" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Create Password :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="password" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Mobile :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="mobile" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">State :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <select class="form-control" name="state">
+                  <option>--- Please select state ----</option>
+                  <option val="1">AndhraPradesh</option>
+                  <option val="2">Telangana</option>
+                  <option val="3">Karnataka</option>
+                  <option val="4">Tamilnadu</option>
+                </select>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Full Address :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <textarea name="address" class="form-control"></textarea>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">City :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <select class="form-control" name="city">
+                  <option>--- Please select state ----</option>
+                  <option val="1">Vijayawada</option>
+                  <option val="2">Hyderabad</option>
+                  <option val="3">Kakinada</option>
+                  <option val="4">Vishakapatnam</option>
+                </select>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Pincode :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="pincode" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">GST Info(Optional) :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="gst" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Information/Request :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <textarea name="request" class="form-control"></textarea>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">&nbsp;</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <div class="m-checkbox-inline">
+                  <label class="m-checkbox m-checkbox--bold">
+                    <input type="checkbox" name="terms" val=""/> I have read the terms and conditions
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">&nbsp;</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <a href="javascript:void(0)" (click)="pay()" class="btn btn-xs btn-primary">SignUp</a>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div id="existinguser-content" style="display:none;">
+          <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Email :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="email" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">Password :</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <input type="text" name="password" class="form-control"/>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">&nbsp;</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <a href="" class="">Forgot Password ?</a>
+              </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+              <label class="col-form-label">&nbsp;</label>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+              <div class="form-group">
+                <a href="#" class="btn btn-xs btn-primary">Login</a>
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    
+        
+      
+                  <!-- <div class="row"> -->
+          <!-- <div class="col-md-2 pull-left"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <a href="#" class="btn btn-xs btn-round btn-outline btn-warning">Back</a> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          <!-- <div class="col-md-2 pull-right text-right"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <a href="#" class="btn btn-xs btn-round btn-outline btn-primary">When to Publish</a> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+  </section>
+</div>

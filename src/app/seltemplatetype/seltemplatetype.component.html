@@ -1,0 +1,146 @@
+<section class="pageheader-default">
+  <div class="semitransparentbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tabs tabs-style-linemove5">
+                                  <nav>
+                                      <ul class="nav nav-pills">
+                                          <li class=""><a class="nav-linka tab1-1 active completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                          <li class=""><a class="nav-linka tab2-2 " href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                          <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
+                                      </ul>
+                                  </nav>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!-- WRAPPER -->
+<div class="wrapper wrapsemibox">
+
+  
+  <div class="semiboxshadow text-center">
+    <img src="img/shp.png" class="img-responsive" alt="">
+  </div>
+  <!-- ABOUT -->
+  <section class="container">
+    <div class="heading mt30">
+      <h4><i class="ion ion-person"></i>Select Display Type</h4>
+    </div>	
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="row">
+          <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+            <label class="col-form-label">Select Color Mode :</label>
+                      </div>
+                      <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+            <div class="form-group">
+              <div class="m-radio-inline">
+                <label class="m-radio m-radio--bold">
+                  <input type="radio" name="color_type" value="1" onclick="javascript:colorCheck();" id="color_ad" checked> Color AD
+                  <span></span>
+                </label>
+                <label class="m-radio m-radio--bold">
+                  <input type="radio" name="color_type" value="2" onclick="javascript:colorCheck();" id="bw_ad"> Black & White AD
+                  <span></span>
+                </label>
+              </div>
+                          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="col-bold-label">Select an AD Template from below :</label>
+    <div class="row" id="color_layout_container">
+      
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="javascript:void(0)" (click)="selectTemplateType()" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout1_color.jpg" class=""/>
+              
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout2_color.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout3_color.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout4_color.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row" id="black_layout_container" style="display:none;">
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout1_bw.jpg" class=""/>
+              
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout2_bw.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout3_bw.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+        <div class="packages-container">
+            <div class="packages-content text-center">
+              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+              <img src="assets/images/layout4_bw.jpg" class=""/>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+          <div class="col-md-2 pull-left">
+            <div class="form-group">
+              <a href="#" class="btn btn-xs btn-round btn-primary">Back</a>
+            </div>
+          </div>
+          <div class="col-md-2 pull-right text-right">
+            <div class="form-group">
+              <a href="#" class="btn btn-xs btn-round btn-primary">Compose Your AD</a>
+            </div>
+          </div>
+        </div>
+  </section>
+</div>

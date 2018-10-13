@@ -1,0 +1,26 @@
+.fr-wrapper a{
+    position:absolute;
+    top:-9999px;
+    left:-9999px;
+}
+
+#colorpicker {
+    visibility: hidden;
+}
+#preview-body, #preview-footer, #preview-header{
+    padding:8px;
+    display:block;
+    color:#FFF;
+}
+#edit-footer .fr-element, #preview-footer{
+    background:#008080;
+    color:#FFF;
+}
+#edit-header .fr-element, #preview-header{
+    background:#019b0f;
+    color:#FFF;
+}
+#edit-body .fr-element, #preview-body{
+    background:#0520aa;
+    color:#FFF;
+}

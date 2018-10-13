@@ -1,0 +1,220 @@
+	<!-- END HEADER -->
+	<section class="pageheader-default">
+		<div class="semitransparentbg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tabs tabs-style-linemove5">
+                                    <nav>
+                                        <ul class="nav nav-pills">
+                                            <li class=""><a class="nav-linka tab1-1 active completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                            <li class=""><a class="nav-linka tab2-2 " href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                            <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
+                                        </ul>
+                                    </nav>
+								</div>
+							</div>
+					</div>
+				</div>
+		</div>
+	</section>
+	<!-- WRAPPER -->
+	<div class="wrapper wrapsemibox">
+
+		
+		<div class="semiboxshadow text-center">
+			<img src="img/shp.png" class="img-responsive" alt="">
+		</div>
+		<!-- ABOUT -->
+		<section class="container">
+				<div class="selected-section">
+					<div class="row">
+						<div class="col-md-3 col-xs-12">
+							<div class="selected-add-label">YOU HAVE SELECTED</div>
+						</div>
+						<div class="col-md-9 col-xs-12">
+							<div class="row">
+								<div class="col-md-4 col-xs-4 text-center">
+									<div class="">Classified Display AD</div>
+									<img src="assets/images/classified_display.png" class="cltype-img" height="80"/>
+								</div>
+								<div class="col-md-3 col-xs-4 text-center">
+									<div class="selected-category-image"><img src="assets/images/categories/recruitments_image.png"/></div>
+								</div>
+								<div class="col-md-4 col-xs-4 text-right">
+									<div class="change-btn-container">
+										<a href="#" class="btn btn-xs btn-warning">Change Category</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+								<div class="selection-paper-container">
+									<div class="row">
+										<div class="col-md-4">
+											<label class="col-form-label">Select News Paper</label>
+											<div class="form-group">
+												<select class="form-control">
+													<option value="default">----Please Select----</option>
+													<option>Eenadu</option>
+													<option>Andhra Jyothhi</option>
+													<option>Sakshi</option>
+													<option>Deccan Chronicle</option>
+													<option>The Hindu</option>
+													<option *ngFor="let item of papers" (click)="getEditonBasedonNewspaper(item)">{{item.name}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<label class="col-form-label">Select city</label>
+											<div class="form-group">
+												<select class="form-control">
+													<option value="default">----Please Select----</option>
+													<option>Hyderabad</option>
+													<option>Vijayawada</option>
+													<option>Kakinada</option>
+													<option>Razole</option>
+													<option>Karimnagar</option>
+													<option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)">{{item.name}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="paper-image">
+												<img src="assets/images/paper1.jpg" alt="" />
+											</div>
+										</div>
+									</div>
+								</div>
+							
+						</div>
+					</div>
+					<!---this will be hide/show based on location or paper -->
+					<div class="packages-container">
+						<div class="packages-header">
+							Available Packages
+						</div>
+						<div class="packages-content">
+							<div class="row">
+								<div class="col-md-3">
+									News Paper
+								</div>
+								<div class="col-md-2">
+									Edition
+								</div>
+								<div class="col-md-3">
+									1543 copies
+								</div>
+								<div class="col-md-2">
+									25/sqcm
+								</div>
+								<div class="col-md-2 text-right">
+									<a href="javascript:void(0)" (click)="selectOffer()" class="btn btn-xs btn-round btn-success">Book Now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="packages-container">
+						<div class="packages-header">
+							Available Papers
+						</div>
+						<div class="packages-content">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="paper-image">
+										<img src="assets/images/paper2.jpg" alt="" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="paper-image">
+										<img src="assets/images/paper3.jpg" alt="" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="paper-image">
+										<img src="assets/images/paper4.jpg" alt="" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="paper-image">
+										<img src="assets/images/paper5.jpg" alt="" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="paper-image">
+										<img src="assets/images/paper6.jpg" alt="" />
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading-v1 text-center">
+								<h2 class="heading-v1-title">OR</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+						<div class="col-md-12">
+							<div class="offer-content">
+								<div class="row">
+									<div class="col-md-8">
+										<div>TOI - WEST ( Mumbai + Pune + Ahmedabad + Nagpur + Goa + Nashik + Kolhapur + Aurangabad )</div>
+									</div>
+									<div class="col-md-2">
+										<div>Rs.3800/sqcm</div>
+									</div>
+									<div class="col-md-2 text-right">
+										<a href="#" class="btn btn-xs btn-round btn-warning">Select</a>
+									</div>
+								</div>
+							</div>
+							<div class="offer-content">
+								<div class="row">
+									<div class="col-md-8">
+										<div>TOI - WEST ( Mumbai + Pune + Ahmedabad + Nagpur + Goa + Nashik + Kolhapur + Aurangabad )</div>
+									</div>
+									<div class="col-md-2">
+										<div>Rs.3800/sqcm</div>
+									</div>
+									<div class="col-md-2 text-right">
+										<a href="#" class="btn btn-xs btn-round btn-warning">Select</a>
+									</div>
+								</div>
+							</div>
+							<div class="offer-content">
+								<div class="row">
+									<div class="col-md-8">
+										<div>TOI - WEST ( Mumbai + Pune + Ahmedabad + Nagpur + Goa + Nashik + Kolhapur + Aurangabad )</div>
+									</div>
+									<div class="col-md-2">
+										<div>Rs.3800/sqcm</div>
+									</div>
+									<div class="col-md-2 text-right">
+										<a href="#" class="btn btn-xs btn-round btn-warning">Select</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+                    <div class="row" style="margin-top:20px;">
+						<div class="col-md-2 pull-left">
+							<div class="form-group">
+								<a href="#" class="btn btn-xs btn-round btn-primary">Back</a>
+							</div>
+						</div>
+						<div class="col-md-2 pull-right text-right">
+							<div class="form-group">
+								<a href="#" class="btn btn-xs btn-round btn-primary">When To Publish</a>
+							</div>
+						</div>
+					</div>
+		</section>
+	</div>

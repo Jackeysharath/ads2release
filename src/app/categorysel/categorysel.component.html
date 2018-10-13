@@ -1,0 +1,177 @@
+<section class="pageheader-default">
+  <div class="semitransparentbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tabs tabs-style-linemove5">
+                                  <nav>
+                                      <ul class="nav nav-pills">
+                                          <li class=""><a class="nav-linka tab1-1 active completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                          <li class=""><a class="nav-linka tab2-2 " href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                          <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
+                                      </ul>
+                                  </nav>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<div class="wrapper wrapsemibox">
+  
+      
+      <div class="semiboxshadow text-center">
+        <img src="img/shp.png" class="img-responsive" alt="">
+      </div>
+<section class="container">
+  <div class="classifiedtype-section">
+    <div class="row">
+      <div class="col-md-3 col-xs-12">
+        <div class="choose-add-label">CHOOSE AD TYPE :</div>
+      </div>
+      <div class="col-md-9 col-xs-12">
+        <div class="m-radio-inline">
+                  
+                  <label class="m-radio m-radio--bold">
+                  <img src="assets/images/classified_text.png" class="cltype-img"/>
+                  <input type="radio" name="ad_type" value="2"> Classified Text AD
+                  <span></span>
+                  </label>
+                  <label class="m-radio m-radio--bold">
+                  <img src="assets/images/classified_display.png" class="cltype-img"/>
+                  <input type="radio" name="ad_type" value="3" checked> Classified Display AD
+                  <span></span>
+                  </label>
+                </div>
+      </div>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-1" data-toggle="tab" aria-expanded="false">Target By Paper</a></li>
+        <li><a href="#tab-2" data-toggle="tab" aria-expanded="true">Target By Location</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="col-form-label">Select News Paper</label>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="default">----Please Select----</option>
+                    <option>Eenadu</option>
+                    <option>Andhra Jyothhi</option>
+                    <option>Sakshi</option>
+                    <option>Deccan Chronicle</option>
+                    <option>The Hindu</option>
+                    <option *ngFor="let item of papers" (click)="getEditonBasedonNewspaper(item)">{{item.name}}</option>
+                    
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label class="col-form-label">Select city</label>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="default">----Please Select----</option>
+                    <option>Hyderabad</option>
+                    <option>Vijayawada</option>
+                    <option>Kakinada</option>
+                    <option>Razole</option>
+                    <option>Karimnagar</option>
+                    <option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="tab-2" class="tab-pane">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="col-form-label">Select city</label>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="default">----Please Select----</option>
+                    <option>Hyderabad</option>
+                    <option>Vijayawada</option>
+                    <option>Kakinada</option>
+                    <option>Razole</option>
+                    <option>Karimnagar</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!-- <label class="col-form-label">Select News Paper</label>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="default">----Please Select----</option>
+                    <option>Eenadu</option>
+                    <option>Andhra Jyothhi</option>
+                    <option>Sakshi</option>
+                    <option>Deccan Chronicle</option>
+                    <option>The Hindu</option>
+                  </select>
+                </div> -->
+              </div>
+              <div class="col-md-4">
+                
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="categories-section">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="javascript:void(0)" (click)="selectCategory()" class="categories-img"><img src="assets/images/categories/matrimonial_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/recruitments_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/property_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/education_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/computers_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/rent_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/retail_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/business_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/obituary_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/entertainment_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/astrology_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/announcements_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/vehicals_image.png"/></a>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <a href="#" class="categories-img"><img src="assets/images/categories/travel_image.png"/></a>
+      </div>
+    </div>
+  </div>
+                            
+</section>
+</div>

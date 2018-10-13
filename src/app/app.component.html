@@ -1,20 +1,234 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- HEADER -->
+	<header class="header js-stick">
+		<div class="container">
+			<!-- YOUR LOGO HERE -->
+			<div class="inner-header">
+				<a class="inner-brand" href="index.html">
+					<img class="brand-dark" src="assets/images/mmlogo.png" alt="">
+				</a>
+			</div>
+			<!-- OPEN MOBILE MENU -->
+			<div class="main-nav-toggle">
+				<div class="nav-icon-toggle" data-toggle="collapse" data-target="#custom-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</div>
+			</div>
+			<!-- MAIN MENU -->
+			<nav id="custom-collapse" class="main-nav collapse clearfix">
+				<ul class="inner-nav pull-right">
+					<li class="has-submenu"><a href="#">Home</a></li>
+					<li class="has-submenu"><a href="#">Our Facilities</a></li>
+					<li class="has-submenu"><a href="#">About Us</a></li>
+					<li class="has-submenu"><a href="#">Contact Us</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- END HEADER -->
 
+	<!-- WRAPPER -->
+	<div class="wrapper">
+		<!-- Services -->
+		<router-outlet></router-outlet>
+
+		
+
+		<!-- FOOTER -->
+		<footer class="footer">
+			<div class="container">
+				
+				<div class="row">
+			
+					<!--  -->
+					<div class="col-sm-12">
+						<div class="text-center">
+
+							<ul class="nav-text-tabs">
+								<li class="active"><a href="#tabs-3-tab-1" data-toggle="tab"><i class="fa fa-newspaper-o"></i> News Paper</a></li>
+								<li><a href="#tabs-3-tab-2" data-toggle="tab"><i class="fa fa-tags"></i> Categories</a></li>
+								<li><a href="#tabs-3-tab-3" data-toggle="tab"><i class="fa fa-file-text-o"></i> Edition</a></li>
+								<li><a href="#tabs-3-tab-4" data-toggle="tab"><i class="fa fa-edit"></i> Languages</a></li>
+							</ul>
+
+							<div class="tab-content">
+
+								<div id="tabs-3-tab-1" class="tab-pane active">
+									<div class="row">
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Times of India</a></li>
+												<li><a href="#">The Hindu</a></li>
+												<li><a href="#">Hindusthan Times</a></li>
+												<li><a href="#">Deccan Chronicle</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Ajit</a></li>
+												<li><a href="#">Amar Ujala</a></li>
+												<li><a href="#">Dharitri</a></li>
+												<li><a href="#">Dinakaran</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Loksatta</a></li>
+												<li><a href="#">Enaadu</a></li>
+												<li><a href="#">Andhra Jyothi</a></li>
+												<li><a href="#">Sakshi</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Mirror</a></li>
+												<li><a href="#">Nai Dunia</a></li>
+												<li><a href="#">The Hindu Tamil</a></li>
+												<li><a href="#">Pudhari</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div id="tabs-3-tab-2" class="tab-pane">
+									<div class="row">
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Matrimonial</a></li>
+												<li><a href="#">Recruitments</a></li>
+												<li><a href="#">Property For Sale</a></li>
+												<li><a href="#">Property To Rent</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Name Change</a></li>
+												<li><a href="#">Vehicles</a></li>
+												<li><a href="#">Astrology</a></li>
+												<li><a href="#">Business</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Computers</a></li>
+												<li><a href="#">Education</a></li>
+												<li><a href="#">Obituary</a></li>
+												<li><a href="#">Personal Announcement</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Retail</a></li>
+												<li><a href="#">Services</a></li>
+												<li><a href="#">Travel</a></li>
+												<li><a href="#">Personal Messages</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div id="tabs-3-tab-3" class="tab-pane">
+									<div class="row">
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Adilabad</a></li>
+												<li><a href="#">Agra</a></li>
+												<li><a href="#">Ahmedabad</a></li>
+												<li><a href="#">Ahmednagar</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Amravati</a></li>
+												<li><a href="#">Baroda</a></li>
+												<li><a href="#">Berhampur</a></li>
+												<li><a href="#">Bhopal</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Gangavati</a></li>
+												<li><a href="#">Gulbarga</a></li>
+												<li><a href="#">Karimnagar</a></li>
+												<li><a href="#">Khammam</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Kurnool</a></li>
+												<li><a href="#">Lucknow</a></li>
+												<li><a href="#">Medak</a></li>
+												<li><a href="#">Nalgonda</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div id="tabs-3-tab-4" class="tab-pane">
+									<div class="row">
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Telugu</a></li>
+												<li><a href="#">Tamil</a></li>
+												<li><a href="#">Kannada</a></li>
+												<li><a href="#">Hindi</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">English</a></li>
+												<li><a href="#">Malayalam</a></li>
+												<li><a href="#">Odissi</a></li>
+												<li><a href="#">Marati</a></li>
+											</ul>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6">
+											<ul class="links-list">
+												<li><a href="#">Urdu</a></li>
+												<li><a href="#">panjabi</a></li>
+											</ul>
+										</div>
+										
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<!--  -->
+			
+					
+			
+					
+			
+					
+			
+				</div><!-- .row -->
+			
+				<div class="copyright">
+			
+					<div class="row">
+			
+						<div class="col-sm-6">
+							<p class="m-0">
+								A Unit of Murthy Media © 2018 , All rights reserved.
+							</p>
+						</div>
+			
+						<div class="col-sm-6">
+							<div class="text-right">
+								<a href="#top" class="scroll-top"><i class="fa fa-level-up"></i></a>
+							</div>
+						</div>
+			
+					</div><!-- .row -->
+			
+				</div>
+			
+			</div>
+		</footer>
+		<!-- END FOOTER -->
+	</div>
+	<!-- END WRAPPER -->	

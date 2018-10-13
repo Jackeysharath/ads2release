@@ -1,0 +1,193 @@
+<section class="pageheader-default">
+  <div class="semitransparentbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tabs tabs-style-linemove5">
+                                  <nav>
+                                      <ul class="nav nav-pills">
+                                          <li class=""><a class="nav-linka tab1-1 completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                          <li class=""><a class="nav-linka tab2-2  active completed" href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                          <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
+                                      </ul>
+                                  </nav>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+<!-- WRAPPER -->
+<div class="wrapper wrapsemibox">
+
+  
+  <div class="semiboxshadow text-center">
+    <img src="img/shp.png" class="img-responsive" alt="">
+  </div>
+  <!-- ABOUT -->
+  <section class="container">
+    <div class="heading mt30">
+      <h4><i class="ion ion-person"></i>Please Type Your AD in Below Text Box. Select AD and use Enhansments to Highlight</h4>
+    </div>	
+    <div class="selected-section">
+        <div class="row">
+          <div class="col-md-3 col-xs-12 text-resp-right">
+            <label class="col-form-label">Add Heading :</label>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <div class="form-group">
+                <select class="form-control" name="city">
+                  <option>--- Please select heading ----</option>
+                  <option val="1">heading1</option>
+                  <option val="2">heading2</option>
+                  <option val="3">heading3</option>
+                  <option val="4">heading4</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <div class="form-group">
+                <select class="form-control" name="city">
+                  <option>--- Please select Sub-heading ----</option>
+                  <option val="1">sub heading1</option>
+                  <option val="2">sub heading2</option>
+                  <option val="3">sub heading3</option>
+                  <option val="4">sub heading4</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <div class="form-group">
+              <input type="text" name="" class="form-control" placeholder="Add Preference? Shareit here" />
+            </div>
+          </div>
+        </div> 
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="packages-container">
+            <div class="packages-header">
+              Edit Header :
+            </div>
+            <div class="packages-content" style="min-height:100px;padding:0px;">
+              <div id="edit-header">
+                For who's & who Unimaginable Luxury
+              </div>
+            </div>
+            <div class="packages-footer">
+              <div class="row">
+                <div class="col-md-6 text-right"><label class="col-form-label">Background :</label></div>
+                <div class="col-md-6">
+                  <div class="color pickerheader" onclick="pickheaderColor();"></div>
+                  <input id="colorpicker-header" type="color" value="#019b0f"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="packages-container">
+            <div class="packages-header">
+              Edit Body :
+            </div>
+            <div class="packages-content" style="min-height:100px;padding:0px;">
+              <div id="edit-body">
+                <span>7500 sq.ft.</span> <span>Villas</span>
+                <p>in Gold Link / Mayfair Garden</p>
+                <p> > Overlooking Parks & Courtyards</p>
+                <p> > Rich Elegant Interiors</p>
+                <p> > Hi-End Luxurious Beds & Baths</p>
+                <p> > Rolls Royce style Parking</p>
+                <p> > Exclusive Soundless Elevator</p>
+                <p> > Fully Automated Censored Systems & many more.</p>
+              </div>
+            </div>
+            <div class="packages-footer">
+              <div class="row">
+                <div class="col-md-6 text-right"><label class="col-form-label">Background :</label></div>
+                <div class="col-md-6">
+                  <div class="color pickerbody" onclick="pickbodyColor();"></div>
+                  <input id="colorpicker-body" type="color" value="#0520aa"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="packages-container">
+            <div class="packages-header">
+              Edit Footer :
+            </div>
+            <div class="packages-content" style="min-height:100px;padding:0px;">
+              <div id="edit-footer">
+                <p>Online Presentation available</p>
+                <p>91111 11111, 92222 22222</p>
+              </div>
+            </div>
+            <div class="packages-footer">
+              <div class="row">
+                <div class="col-md-6 text-right"><label class="col-form-label">Background :</label></div>
+                <div class="col-md-6">
+                  <div class="color pickerfooter" onclick="pickfooterColor();"></div>
+                  <input id="colorpicker-footer" type="color" value="#008080"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="packages-container">
+            <div class="packages-header">
+              AD Preview :
+            </div>
+            <div class="packages-content" style="min-height:150px;">
+              <div class="form-group">
+                <div class="m-radio-inline">
+                  <label class="m-radio m-radio--bold">
+                    <input type="radio" name="width_type" value="1" (click)="cmCheck()" id="three" checked> 3 cm
+                    <span></span>
+                  </label>
+                  <label class="m-radio m-radio--bold">
+                    <input type="radio" name="width_type" value="2" (click)="cmCheck()" id="six"> 6 cm
+                    <span></span>
+                  </label>
+                  <label class="m-radio m-radio--bold">
+                    <input type="radio" name="width_type" value="3" (click)="cmCheck()" id="eight" checked> 8 cm
+                    <span></span>
+                  </label>
+                  <label class="m-radio m-radio--bold">
+                    <input type="radio" name="width_type" value="4" (click)="cmCheck()" id="twelve"> 12 cm
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+              <div style="overflow:hidden;overflow-x:auto;">
+                <div id="preview-container">
+                  <div id="preview-header"></div>
+                  <div id="preview-body"></div>
+                  <div id="preview-footer" style="padding:6px;display:block;background:#008080;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="packages-container">
+            <div class="packages-header">
+              AD Design :
+            </div>
+            <div class="packages-content" style="min-height:150px;">
+              <p>AD Cost : Rs. 300</p>
+              <p>Basic Price : Rs. 500</p>
+              <p>For Extra Sq cm : Rs. 150</p>
+              <p>Service Tax : Rs. 200</p>
+              <p>Total : Rs. 1150</p>
+            </div>
+            <div class="packages-footer">
+              <button class="btn-primary" (click)="checkout()">CHECKOUT</button>
+              <div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    
+  </section>
+</div>
