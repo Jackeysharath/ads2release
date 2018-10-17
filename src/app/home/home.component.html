@@ -1,7 +1,7 @@
 <section id="services" class="module">
   <div class="container">
     <div class="row multi-columns-row">
-      <div class="col-sm-4 col-md-4 col-lg-4">
+      <!-- <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="box-icon text-center">
           <img src="assets/images/newspaper.png" alt="" class="">
           <h4>CLASSIFIED TEXT AD</h4>
@@ -24,12 +24,12 @@
           <p>The most costlier option in newspaper advertising but with freedom to customize Ad Height & Width with Page Choice (Front / Back / Page 3) appearing beside editorial content.</p>
           <a href="#" class="btn btn-xs btn-outline btn-info">Book Now</a>
         </div>
-      </div>
+      </div> -->
       <div class="col-sm-4 col-md-4 col-lg-4" *ngFor="let item of paperTypes">
         <div class="box-icon text-center">
           <img src="assets/images/newspaper.png" alt="" class="">
-          <h4>{{item.name}}</h4>
-          <p>{{item.desc}}</p>
+          <h4>{{item.type_name}}</h4>
+          <ul><li *ngFor="let t of item.desc">{{t}}<li></ul>
           <a href="javascript:void(0)" class="btn btn-xs btn-outline btn-info" (click)="selType(item)">Book Now</a>
         </div>
       </div>

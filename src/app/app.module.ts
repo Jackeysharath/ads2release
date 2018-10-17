@@ -16,7 +16,7 @@ import { PrepaymentComponent } from './prepayment/prepayment.component';
 import { ApiService } from './common/api.service';
 import { Http } from '@angular/http';
 import {HttpModule} from '@angular/http';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,10 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     routes
   ],
-  providers: [ApiService,HttpModule],
+  providers: [ApiService,HttpModule,HomeComponent,AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

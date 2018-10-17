@@ -34,12 +34,12 @@
                   
                   <label class="m-radio m-radio--bold">
                   <img src="assets/images/classified_text.png" class="cltype-img"/>
-                  <input type="radio" name="ad_type" value="2"> Classified Text AD
+                  <input type="radio" name="ad_type"  value="1"  [(ngModel)]="selType.id" (click)="setTypeById(1)"> Classified Text
                   <span></span>
                   </label>
                   <label class="m-radio m-radio--bold">
                   <img src="assets/images/classified_display.png" class="cltype-img"/>
-                  <input type="radio" name="ad_type" value="3" checked> Classified Display AD
+                  <input type="radio" name="ad_type"  value="2"  [(ngModel)]="selType.id" (click)="setTypeById(2)"> Classified Display 
                   <span></span>
                   </label>
                 </div>
@@ -59,14 +59,14 @@
               <div class="col-md-4">
                 <label class="col-form-label">Select News Paper</label>
                 <div class="form-group">
-                  <select class="form-control">
+                  <select class="form-control" (change)="getEditonBasedonNewspaper($event.target.value)">
                     <option value="default">----Please Select----</option>
-                    <option>Eenadu</option>
+                    <!-- <option>Eenadu</option>
                     <option>Andhra Jyothhi</option>
                     <option>Sakshi</option>
                     <option>Deccan Chronicle</option>
-                    <option>The Hindu</option>
-                    <option *ngFor="let item of papers" (click)="getEditonBasedonNewspaper(item)">{{item.name}}</option>
+                    <option>The Hindu</option> -->
+                    <option *ngFor="let item of papers" [selected]="paper.id==item.id" value="{{item.id}}"  >{{item.paper_name}}</option>
                     
                   </select>
                 </div>

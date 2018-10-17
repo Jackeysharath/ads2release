@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AppComponent } from "src/app/app.component";
 import { ApiService } from "src/app/common/api.service";
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-categorysel',
@@ -16,21 +17,57 @@ export class CategoryselComponent implements OnInit {
   category: any;
   paper: any;
   selType: any;
+  paperTypes: any;
 
-  constructor(private route:Router,private app:AppComponent,private _api:ApiService) { }
+  constructor(private route:Router,private app:AppComponent,private _api:ApiService,private home:HomeComponent) { }
 
   ngOnInit() {
     this.getLocals();
-  }
+    this.getOuters();
+    }
   getLocals(){
     this.selType=this.app.getLocalStorage("type_id");
+    console.log(this.selType);
     this.paper=this.app.getLocalStorage("paper");
     this.category=this.app.getLocalStorage("category");
     this.edition=this.app.getLocalStorage("edition");
   }
+  getOuters(){
+    this.getNewspapers();
+  }
+  setTypeById(id:number){
+    this._api.POST('getPaperTypes', {}).subscribe(data =>{
+      // console.log(data.json);
+      if(data.status==1){
+        
+      let dt=JSON.parse(data.json);
+        this.paperTypes=dt.data;
+        let i=0;
+        this.paperTypes.forEach(element => {
+          this.paperTypes[i].desc=this.home.rearrangedesc(element.type_description);
+i++;
+        });
+        this.paperTypes.forEach(element => {
+          if(element.id==id){
+            this.home.selType(element,0);
+            this.getLocals();
+          }
+        });
+      }else{
+        this.paperTypes=[];
+      }
+
+    });
+
+  }
   getNewspapers(){
     this._api.POST('getPapers', {"type_id":this.selType.id}).subscribe(data =>{
-      this.papers=data.papers;
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.papers=dt.data;
+      }
+      
     });
 
   }
@@ -40,11 +77,28 @@ export class CategoryselComponent implements OnInit {
     });
   }
   getNewpaperBasedonEdition(){}
-  getEditonBasedonNewspaper(paper){
+  getPaperById(id:any){
+    let a=0;
+    this.papers.forEach(element => {
+      if(element.id==id){
+        a=element;
+      }
+      // return element;
+    });
+    return a;
+  }
+  getEditonBasedonNewspaper(paper:any){
+    // debugger;
+    paper=this.getPaperById(paper);
     this.paper=paper;
     this.app.setLocalStorage("paper",this.paper);
     this._api.POST('getEditions', {"paper_id":paper.id}).subscribe(data =>{
-      this.editions=data.editions;
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.editions=dt.data;
+      }
+
     });
 
   }

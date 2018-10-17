@@ -3,8 +3,10 @@ import {Injectable} from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestMethod,Request } from '@angular/http';
 //import {BookComponent} from '../book/book.component';
 // import 'rxjs/add/operator/map';
-// import { Observable } from "rxjs/Observable";
+import { map } from 'rxjs/operators';
+import { Observable } from "rxjs";
 import { parseString } from 'xml2js';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiService {
@@ -15,7 +17,7 @@ export class ApiService {
     //private url:any='http://192.168.0.169:2007/api/';
     mdata:any=[];
     public other_url:string="http://cems.medsoft.in/intgtenet";
-   private url:any='http://cems.medsoft.in/intgtenet/CemsDataRequest.asmx/';
+   private url:any='http://epanel.ads2release.in/apiservice/';
     private url1:any='http://cems.medsoft.in/intgtenet/CemsDataRequest.asmx/GetAuthorization';
     private ticketurl:any='https://tenetmedcorp.freshdesk.com/api/v2/tickets';
      constructor(http: Http){
@@ -41,20 +43,22 @@ export class ApiService {
     //  } 
     masterCall(url, data){
 
-        
+        // debugger;
         //data.TokenNo=localStorage.getItem('req_token')
         let body=this.transform(data);
        // console.log(body);
+       console.log(this.url + url,body);
         return this.http.post(this.url + url,body,{
              headers : {
-                 'Accept': 'application/xml',
+
                  'Content-Type' : 'application/x-www-form-urlencoded'
              }
              
-         })
-         .map((res: Response) => {
-            let res1=this.trimxmltag(res['_body']);
-            //console.log(res1);
+         }).map((res: Response) => {
+            // let res1=res;
+             let res1=this.trimxmltag(res['_body']);
+            // return res1;
+            // console.log(res1);
             let tstat=JSON.parse(res1).status;
              if (tstat==1){
                  return { status: tstat, json: res1 }
@@ -66,15 +70,17 @@ export class ApiService {
     }
 
      POST(url, data){
+        //  debugger;
          //request token here
          //localStorage.setItem('req_token','');
-       this.getToken().map(
-                data2 => {
-                    this.token = data2.data[0].GUID
-                    localStorage.setItem('req_token',this.token);
-                }
-            );
-            return this.masterCall(url,data).debounceTime(200).map((res)=>{
+    //    this.getToken().map(
+    //             data2 => {
+    //                 this.token = data2.data[0].GUID
+    //                 localStorage.setItem('req_token',this.token);
+    //             }
+    //         );
+    // console.log(url,data);
+            return this.masterCall(url,data).map((res)=>{
                 return this.mdata=res;
             });
             
