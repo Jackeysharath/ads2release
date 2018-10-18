@@ -71,17 +71,17 @@
                   </select>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div *ngIf="seleditions?.length>0" class="col-md-4">
                 <label class="col-form-label">Select city</label>
                 <div class="form-group">
-                  <select class="form-control">
+                  <select class="form-control"  (change)="getCategoriesOnSelection($event.target.value)">
                     <option value="default">----Please Select----</option>
-                    <option>Hyderabad</option>
+                    <!-- <option>Hyderabad</option>
                     <option>Vijayawada</option>
                     <option>Kakinada</option>
                     <option>Razole</option>
-                    <option>Karimnagar</option>
-                    <option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)">{{item.name}}</option>
+                    <option>Karimnagar</option> -->
+                    <option *ngFor="let item of seleditions" [selected]="edition.id==item.id" value="{{item.id}}">{{item.edition_name}}</option>
                   </select>
                 </div>
               </div>
@@ -127,48 +127,169 @@
     </div>
   </div>
   <div class="categories-section">
+    <label class="col-form-label">Select Your AD Category :</label>
     <div class="row">
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="javascript:void(0)" (click)="selectCategory()" class="categories-img"><img src="assets/images/categories/matrimonial_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/matrimony.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Matrimonial</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/recruitments_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/property.png" alt="img09"/>
+          <figcaption>
+            <h2>Property</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/property_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/Recruitment.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Recruitment</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/education_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/astrology.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Astrology</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/computers_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/travel.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Travel</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/rent_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/vehicals.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Vehicles</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/retail_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/business.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Business</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/business_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/computers.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Computers</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/obituary_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/anouncements.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Announcements</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/entertainment_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/education.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Education</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/astrology_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/name-change.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Name Change</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/announcements_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/retail.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Retail</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/vehicals_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/marriage.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Marriage Bureau</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="categories-img"><img src="assets/images/categories/travel_image.png"/></a>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/tenders.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Tenders</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/entertainment.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Entertainment</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/services.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Services</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/personal.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Personal</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
+      </div>
+      <div class="col-md-2 col-sm-4 col-xs-6">
+        <figure class="effect-ming">
+          <img src="assets/images/other.jpg" alt="img09"/>
+          <figcaption>
+            <h2>Other Categories</h2>
+            <a href="#">View more</a>
+          </figcaption>			
+        </figure>
       </div>
     </div>
   </div>

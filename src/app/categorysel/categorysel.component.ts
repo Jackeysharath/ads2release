@@ -18,6 +18,7 @@ export class CategoryselComponent implements OnInit {
   paper: any;
   selType: any;
   paperTypes: any;
+  seleditions: any;
 
   constructor(private route:Router,private app:AppComponent,private _api:ApiService,private home:HomeComponent) { }
 
@@ -27,8 +28,12 @@ export class CategoryselComponent implements OnInit {
     }
   getLocals(){
     this.selType=this.app.getLocalStorage("type_id");
-    console.log(this.selType);
+    // console.log(this.selType);
     this.paper=this.app.getLocalStorage("paper");
+    // debugger;
+    // if(this.paper!==null&&this.paper!==undefined){
+    //   this.getEditonBasedonNewspaper(this.paper.id);
+    // }
     this.category=this.app.getLocalStorage("category");
     this.edition=this.app.getLocalStorage("edition");
   }
@@ -87,6 +92,16 @@ i++;
     });
     return a;
   }
+  getEditionById(id:any){
+    let a=0;
+    this.seleditions.forEach(element => {
+      if(element.id==id){
+        a=element;
+      }
+      // return element;
+    });
+    return a;
+  }
   getEditonBasedonNewspaper(paper:any){
     // debugger;
     paper=this.getPaperById(paper);
@@ -96,13 +111,16 @@ i++;
       if(data.status==1){
         
         let dt=JSON.parse(data.json);
-        this.editions=dt.data;
+        this.seleditions=dt.data;
       }
 
     });
 
   }
   getCategoriesOnSelection(edition){
+    // debugger;
+    edition=this.getEditionById(edition);
+    console.log(edition);
     this.edition=edition;
     this.app.setLocalStorage("location",this.edition);
     this._api.POST('getCategories', {"paper_id":this.paper,"edition_id":this.edition.id}).subscribe(data =>{
