@@ -35,7 +35,7 @@
 						<div class="col-md-9 col-xs-12">
 							<div class="row">
 								<div class="col-md-4 col-xs-4 text-center">
-									<div class="">Classified Display AD</div>
+									<div class="">{{selType.type_name}}</div>
 									<img src="assets/images/classified_display.png" class="cltype-img" height="80"/>
 								</div>
 								<div class="col-md-3 col-xs-4 text-center">
@@ -59,12 +59,12 @@
 											<div class="form-group">
 												<select class="form-control">
 													<option value="default">----Please Select----</option>
-													<option>Eenadu</option>
+													<!-- <option>Eenadu</option>
 													<option>Andhra Jyothhi</option>
 													<option>Sakshi</option>
 													<option>Deccan Chronicle</option>
-													<option>The Hindu</option>
-													<option *ngFor="let item of papers" (click)="getEditonBasedonNewspaper(item)">{{item.name}}</option>
+													<option>The Hindu</option> -->
+													<option *ngFor="let item of papers" (click)="getEditonBasedonNewspaper(item)" [selected]="paper.id==item.id" value="{{item.id}}">{{item.paper_name}}</option>
 												</select>
 											</div>
 										</div>
@@ -73,12 +73,12 @@
 											<div class="form-group">
 												<select class="form-control">
 													<option value="default">----Please Select----</option>
-													<option>Hyderabad</option>
+													<!-- <option>Hyderabad</option>
 													<option>Vijayawada</option>
 													<option>Kakinada</option>
 													<option>Razole</option>
-													<option>Karimnagar</option>
-													<option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)">{{item.name}}</option>
+													<option>Karimnagar</option> -->
+													<option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)" [selected]="edition.id==item.id" value="{{item.id}}">{{item.edition_name}}</option>
 												</select>
 											</div>
 										</div>
@@ -98,26 +98,26 @@
 							Available Packages
 						</div>
 						<div class="packages-content">
-							<div class="row">
+							<div class="row" *ngFor="let item of pricesList">
 								<div class="col-md-3">
-									News Paper
+									{{paper.paper_name}}
 								</div>
 								<div class="col-md-2">
-									Edition
+									{{edition.edition_name}}
 								</div>
 								<div class="col-md-3">
-									1543 copies
+									{{edition.copies}} copies 
 								</div>
 								<div class="col-md-2">
-									25/sqcm
+									{{item.amount}}/sqcm
 								</div>
 								<div class="col-md-2 text-right">
-									<a href="javascript:void(0)" (click)="selectOffer()" class="btn btn-xs btn-round btn-success">Book Now</a>
+									<a href="javascript:void(0)" (click)="selectOffer(item)" class="btn btn-xs btn-round btn-success">Book Now</a>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="packages-container">
+					<div class="packages-container" *ngIf="target_by=='location'">
 						<div class="packages-header">
 							Available Papers
 						</div>

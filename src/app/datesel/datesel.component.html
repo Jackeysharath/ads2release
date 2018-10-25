@@ -38,14 +38,14 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                  <div class="dec button">-</div>
+                  <div class="dec button"  (click)="noofdays('minus')">-</div>
                   <div class="days-content">
                     <div class="input-append input-group">
-                      <input type="text" name="days" id="days-val" value="3" class="form-control"/>
+                      <input type="text" name="days" id="days-val" value="{{noofads}}" class="form-control"/>
                       <span class="input-group-addon">Days</span>
                     </div>
                   </div>
-                  <div class="inc button">+</div>
+                  <div class="inc button" (click)="noofdays('plus')">+</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
             <div class="packages-content" style="min-height:280px;">
               <label class="col-form-label">Select to Apply :</label>
               <div class="mt-radio-list">
-                                                          <label class="m-radio m-radio--bold">
+                                                          <!-- <label class="m-radio m-radio--bold">
                                                               <input type="radio" name="optionsRadios" id="optionsRadios22" value="option1" > None
                                                               <span></span>
                                                           </label>
@@ -91,7 +91,12 @@
                                                           <label class="m-radio m-radio--bold">
                                                               <input type="radio" name="optionsRadios" id="optionsRadios24" value="option3" > 3 ADs= Rs. 2100
                                                               <span></span>
-                                                          </label>
+                                                          </label> -->
+                                                          <label class="m-radio m-radio--bold" *ngFor="let item of scheamspackage">
+                                                            <input type="radio" name="optionsRadios" id="optionsRadios24" value="{{item.cid}}" > {{item.sname}}
+                                                            <span></span>
+                                                        </label>
+                                                          <!-- scheamspackage -->
                                                       </div>
             </div>
           </div>

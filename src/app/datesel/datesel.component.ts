@@ -19,6 +19,7 @@ export class DateselComponent implements OnInit,AfterViewInit {
   category: any;
   paper: any;
   selType: any;
+  noofads:any=2;
   @ViewChild('mdpdemo') mdpdemo: ElementRef;
   @ViewChild('altField') altField: ElementRef;
   
@@ -26,6 +27,7 @@ export class DateselComponent implements OnInit,AfterViewInit {
 
   ngOnInit() {
     this.getLocals();
+    this.getScheamsPackages();
   }
   getLocals(){
     this.selType=this.app.getLocalStorage("type_id");
@@ -40,18 +42,40 @@ export class DateselComponent implements OnInit,AfterViewInit {
   }
   getScheamsPackages(){
     this._api.POST('getScheamsPackage', {"type_id":this.selType.id,"paper_id":this.paper.id,"edition_id":this.edition.id,"offer_id":""}).subscribe(data =>{
-      this.scheamspackage=data.papers;
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.scheamspackage=dt.data;
+      }
+      // this.scheamspackage=data.papers;
     });
   }
   ngAfterViewInit(){
-    let altField=this.altField.nativeElement
+    // let altField=this.altField.nativeElement;
+    this.dateIntiate();
+  }
+  dateIntiate(){
+    var bufferdays=1;
+    var date = new Date();
     $('#mdp-demo').multiDatesPicker({
+      minDate: bufferdays, // this should be buffer time
 			altField: "#altField",
-		  maxPicks: 3
+      maxPicks: this.noofads
+
 		});
   }
   getCompose(){
     this.route.navigate(['./compose']);
   }
+  noofdays(act){
+    if(act=='plus'){
+      this.noofads++;
+    }else if(act=='minus'){
+      if(this.noofads>1)
+      this.noofads--;
+    }
+    this.dateIntiate();
+  }
+
 
 }

@@ -120,11 +120,16 @@ i++;
   getCategoriesOnSelection(edition){
     // debugger;
     edition=this.getEditionById(edition);
-    console.log(edition);
+    // console.log(edition);
     this.edition=edition;
-    this.app.setLocalStorage("location",this.edition);
-    this._api.POST('getCategories', {"paper_id":this.paper,"edition_id":this.edition.id}).subscribe(data =>{
-      this.categories=data.categories;
+    this.app.setLocalStorage("edition",this.edition);
+    this._api.POST('getCategories', {"paper_id":this.paper.id,"edition_id":this.edition.id}).subscribe(data =>{
+      
+      if(data.status==1){
+        let dt=JSON.parse(data.json);
+        this.categories=dt.data;
+      }
+      
     });
 
   }
@@ -132,6 +137,9 @@ i++;
     this.category=category;
     this.app.setLocalStorage("category",this.category);
     this.route.navigate(['./selectedcat']);
+  }
+  selectTargetBy(item){
+    this.app.setLocalStorage("target_by","item");
   }
 
 }

@@ -24,7 +24,7 @@ export class ComposeComponent implements OnInit,AfterViewInit {
     this.jqryfunctionsload();
   }
   checkout(){
-    this.route.navigate(['./login']);
+    this.route.navigate(['./bookingsummary']);
   }
   jqryfunctionsload(){
 

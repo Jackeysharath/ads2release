@@ -6,8 +6,8 @@
           <div class="tabs tabs-style-linemove5">
                                   <nav>
                                       <ul class="nav nav-pills">
-                                          <li class=""><a class="nav-linka tab1-1 active completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
-                                          <li class=""><a class="nav-linka tab2-2 " href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
+                                          <li class=""><a class="nav-linka tab1-1 completed" href="#tab-1" data-toggle="tab" data-tabs="1" title="Personal Information"><i class="fa fa-newspaper-o tabs-icon">PAPER</i><span>1. SELECT NEWS PAPER</span></a></li>
+                                          <li class=""><a class="nav-linka tab2-2  active completed" href="" data-toggle="tab" data-tabs="2" title="Passport Information"><i class="fa fa-edit tabs-icon">COMPOSE</i><span>2. COMPOSE AD</span></a></li>
                                           <li class=""><a class="nav-linka tab3-3" href="" data-toggle="tab" data-tabs="3" title="Contractual Information"><i class="fa fa-credit-card tabs-icon">PAY</i><span>3. PAYMENTS</span></a></li>
                                       </ul>
                                   </nav>
@@ -36,7 +36,7 @@
               </div>
               <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                 <div class="">
-                  <span class="add_value">Classified Display</span>
+                  <span class="add_value">{{selType.type_name}}</span>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
               </div>
               <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                 <div class="">
-                  <span class="add_value">Recruitment</span>
+                  <span class="add_value">{{category.category_name}}</span>
                 </div>
               </div>
             </div>
@@ -77,27 +77,20 @@
             <tbody>
               <tr>
                 <td>1.</td>
-                <td>The Hindu</td>
-                <td>Hyderabad</td>
-                <td>1st Page</td>
+                <td>{{paper.paper_name}}</td>
+                <td>{{edition.edition_name}}</td>
+                <td>-</td>
                 <td>15/06/2018</td>
-                <td style="text-align:right;">Rs. 1000.00</td>
+                <td style="text-align:right;">Rs. {{getAmount()}}</td>
               </tr>
-              <tr>
-                <td>2.</td>
-                <td>The Hindu</td>
-                <td>Hyderabad</td>
-                <td>1st Page</td>
-                <td>15/06/2018</td>
-                <td style="text-align:right;">Rs. 1000.00</td>
-              </tr>
+              
               <tr>
                 <td colspan="5" style="font-weight:600;text-align:right;color:#333;">GST (5%)</td>
-                <td style="text-align:right;">100.00</td>
+                <td style="text-align:right;">Rs. {{getGst()}}</td>
               </tr>
               <tr>
                 <td colspan="5" style="font-weight:600;text-align:right;color:#333;">Total Cost </td>
-                <td style="text-align:right;">2100.00</td>
+                <td style="text-align:right;">Rs .{{getTotal()}}</td>
               </tr>
             </tbody>
           </table>
@@ -155,7 +148,7 @@
           
           <div class="col-md-2 pull-right text-right">
             <div class="form-group">
-              <a href="#" class="btn btn-xs btn-round btn-primary">Continue</a>
+              <a href="#" class="btn btn-xs btn-round btn-primary" (click)="checkout()">Continue</a>
             </div>
           </div>
         </div>

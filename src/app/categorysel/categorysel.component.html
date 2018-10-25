@@ -49,8 +49,8 @@
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab-1" data-toggle="tab" aria-expanded="false">Target By Paper</a></li>
-        <li><a href="#tab-2" data-toggle="tab" aria-expanded="true">Target By Location</a></li>
+        <li class="active"><a href="#tab-1" data-toggle="tab" aria-expanded="false" #tarbypap  (click)="selectTargetBy('paper')">Target By Paper</a></li>
+        <li><a href="#tab-2" data-toggle="tab" aria-expanded="true"  #tarbyloc (click)="selectTargetBy('location')">Target By Location</a></li>
       </ul>
       <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
@@ -129,168 +129,16 @@
   <div class="categories-section">
     <label class="col-form-label">Select Your AD Category :</label>
     <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
+      <div class="col-md-2 col-sm-4 col-xs-6" *ngFor="let item of categories">
+        <figure class="effect-ming" (click)="selectCategory(item)">
           <img src="assets/images/matrimony.jpg" alt="img09"/>
           <figcaption>
-            <h2>Matrimonial</h2>
+            <h2>{{item.category_name}}</h2>
             <a href="#">View more</a>
           </figcaption>			
         </figure>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/property.png" alt="img09"/>
-          <figcaption>
-            <h2>Property</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/Recruitment.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Recruitment</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/astrology.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Astrology</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/travel.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Travel</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/vehicals.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Vehicles</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/business.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Business</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/computers.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Computers</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/anouncements.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Announcements</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/education.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Education</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/name-change.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Name Change</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/retail.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Retail</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/marriage.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Marriage Bureau</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/tenders.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Tenders</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/entertainment.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Entertainment</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/services.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Services</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/personal.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Personal</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <figure class="effect-ming">
-          <img src="assets/images/other.jpg" alt="img09"/>
-          <figcaption>
-            <h2>Other Categories</h2>
-            <a href="#">View more</a>
-          </figcaption>			
-        </figure>
-      </div>
+      
     </div>
   </div>
                             

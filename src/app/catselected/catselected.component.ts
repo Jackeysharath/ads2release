@@ -23,27 +23,59 @@ export class CatselectedComponent implements OnInit {
 
   ngOnInit() {
     this.getLocals();
+    this.getOuters();
   }
   getLocals(){
     this.selType=this.app.getLocalStorage("type_id");
     this.paper=this.app.getLocalStorage("paper");
     this.category=this.app.getLocalStorage("category");
     this.edition=this.app.getLocalStorage("edition");
+    this.target_by=this.app.getLocalStorage("target_by");
+  }
+  getOuters(){
+    this.getNewspapers();
+    this.getEditions();
+    this.getPrices();
   }
   getNewspapers(){
     this._api.POST('getPapers', {"type_id":this.selType.id}).subscribe(data =>{
-      this.papers=data.papers;
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.papers=dt.data;
+      }
+      
     });
 
   }
+  getCTnormalPrice(){
+    this._api.POST('getCTnormalPrice', {"paper_id":this.paper.id,"edition_id":this.edition.id,"category_id":this.category.id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.editions=dt.data;
+      }
+      // this.editions=data.editions;
+    });
+  }
   getEditions(){
-    this._api.POST('getEditions', {}).subscribe(data =>{
-      this.editions=data.editions;
+    this._api.POST('getEditions', {"paper_id":this.paper.id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.editions=dt.data;
+      }
+      // this.editions=data.editions;
     });
   }
   getPrices(){
     this._api.POST('getPricesList', {"type_id":this.selType.id,"paper_id":this.paper.id,"category_id":this.category.id,"edition_id":this.edition.id}).subscribe(data =>{
-      this.pricesList=data.pricesList;
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.pricesList=dt.data;
+      }
+      // this.pricesList=data.pricesList;
     });
   }
   getOffers(){
@@ -55,7 +87,7 @@ export class CatselectedComponent implements OnInit {
     this.finalselection=data;
     this.app.setLocalStorage("finalselection",data);
     if(this.selType.id==1){
-      this.route.navigate(['./compose']);
+      this.route.navigate(['./date']);
     }else if(this.selType.id==2){
       this.route.navigate(['./seltemplate']);
     }
