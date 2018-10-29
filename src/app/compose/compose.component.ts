@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ApiService } from "src/app/common/api.service";
+import { AppComponent } from "src/app/app.component";
+import { EnhacementService } from "src/app/common/enhacement.service";
 declare var jquery: any;
 declare var $ :any;
 declare var Modernizr :any;
@@ -15,15 +18,66 @@ declare var checked :any;
   styleUrls: ['./compose.component.css']
 })
 export class ComposeComponent implements OnInit,AfterViewInit {
+  selecteddates: any;
+  mystyle: any;
+  instructions: any;
+  enhancements: any = [];
+  subcategories: any = [];
+  getclevel: any = 2;
+  target_by: any;
+  edition: any;
+  category: any;
+  paper: any;
+  selType: any;
 
-  constructor(private route:Router) { }
+  constructor(private route:Router,private app:AppComponent,private _api:ApiService,private enhac:EnhacementService) { }
 
   ngOnInit() {
+    this.getLocals();
+    this.getOuters();
+  }
+  getLocals(){
+    this.selType=this.app.getLocalStorage("type_id");
+    this.paper=this.app.getLocalStorage("paper");
+    this.category=this.app.getLocalStorage("category");
+    this.edition=this.app.getLocalStorage("edition");
+    this.target_by=this.app.getLocalStorage("targetby");
+    this.selecteddates=this.app.getLocalStorage("selecteddates");
+    
+  }
+  getOuters(){
+    
+this.getSubSubCat(this.category.id,2);
+if(this.selType.id==1){
+  this.getEnhancements(this.paper.id,this.category.id,2);
+  this.getEnhancements(this.paper.id,this.category.id,1);
+  this.getInstructions(this.selType.id,this.paper.id,this.category.id,this.edition.id);
+  this.getSampleAds(this.selType.id,this.paper.id,this.category.id,this.edition.id);
+  
+}
+
+
+  }
+  
+  getSubSubCat(val,level){
+    this.getclevel=level;
+    this._api.POST('getSubCategories', {"type_id":this.selType.id,"paper_id":this.paper.id,"category_id":val,"level":this.getclevel}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.subcategories[level] =dt.data;
+        // console.log(this.subcategories);
+      }
+      
+    });
   }
   ngAfterViewInit(){
     this.jqryfunctionsload();
   }
   checkout(){
+    let ad=$("div#preview-body.ct").html();
+    // debugger;
+    this.app.setLocalStorage("addcontent",ad);
     this.route.navigate(['./bookingsummary']);
   }
   jqryfunctionsload(){
@@ -101,6 +155,52 @@ f.addEventListener('change', function(g) {
     else if((<HTMLInputElement>document.getElementById('twelve')).checked) {
       document.getElementById('preview-container').style.width = '12cm';
     }
+  }
+  getEnhancements(paper_id,category_id,enhancement_type){
+
+    this._api.POST('getEnhacements', {"type_id":this.selType.id,"paper_id":paper_id,"category_id":category_id,"enhancement_type":enhancement_type}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.enhancements[enhancement_type] =dt.data;
+        // console.log(this.subcategories);
+      }
+      
+    });
+
+  }
+  getInstructions(type_id,paper_id,category_id,edition_id){
+    this._api.POST('getInstructions', {"type_id":type_id,"paper_id":paper_id,"category_id":category_id,"edition_id":edition_id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.instructions =dt.data;
+        // console.log(this.subcategories);
+      }
+      
+    });
+  }
+  applyEnhacement(enh:any){
+    // debugger;
+   let k= this.enhac.action(enh);
+   if(enh.enhancement_code=="BOR"){
+    let key=k[0].toString();
+    let val=k[1].toString();
+    let obj={"border-style":val+'!important'};
+     this.mystyle=obj;
+   }
+    // console.log(this.mystyle);
+  }
+  getSampleAds(type_id,paper_id,category_id,edition_id){
+    this._api.POST('getSampleAds', {"type_id":type_id,"paper_id":paper_id,"category_id":category_id,"edition_id":edition_id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.instructions =dt.data;
+        // console.log(this.subcategories);
+      }
+      
+    });
   }
 
 }

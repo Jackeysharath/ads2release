@@ -93,7 +93,23 @@
 						</div>
 					</div>
 					<!---this will be hide/show based on location or paper -->
-					<div class="packages-container">
+					<div class="packages-container" *ngIf="target_by=='location'">
+						<div class="packages-header">
+							Available Papers
+						</div>
+						<div class="packages-content">
+							<div class="row">
+								<div class="col-md-4" *ngFor="let item of locpapers">
+									<div class="paper-image" (click)="setPaper(item)">
+										<img src="assets/images/paper2.jpg" alt="" />
+									</div>
+								</div>
+
+								
+							</div>
+						</div>
+					</div>
+					<div class="packages-container" *ngIf="packagesshow">
 						<div class="packages-header">
 							Available Packages
 						</div>
@@ -117,41 +133,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="packages-container" *ngIf="target_by=='location'">
-						<div class="packages-header">
-							Available Papers
-						</div>
-						<div class="packages-content">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="paper-image">
-										<img src="assets/images/paper2.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="paper-image">
-										<img src="assets/images/paper3.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="paper-image">
-										<img src="assets/images/paper4.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="paper-image">
-										<img src="assets/images/paper5.jpg" alt="" />
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="paper-image">
-										<img src="assets/images/paper6.jpg" alt="" />
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="heading-v1 text-center">

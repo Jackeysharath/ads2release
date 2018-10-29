@@ -14,6 +14,8 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { PrepaymentComponent } from './prepayment/prepayment.component';
 import { ApiService } from './common/api.service';
+import { EnhacementService } from './common/enhacement.service';
+
 import { Http } from '@angular/http';
 import {HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +42,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     routes
   ],
-  providers: [ApiService,HttpModule,HomeComponent,AppComponent],
+  providers: [ApiService,HttpModule,HomeComponent,AppComponent,EnhacementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

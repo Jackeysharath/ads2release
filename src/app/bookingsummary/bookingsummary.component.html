@@ -56,7 +56,8 @@
               </div>
               <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                 <div class="">
-                  <textarea class="form-control" name="" rows="2"></textarea>
+                  <div style="background-color:#eee"  [innerHTML]="addcontent"></div>
+                  <!-- <textarea class="form-control" name="" rows="2" ></textarea> -->
                 </div>
               </div>
             </div>
@@ -69,7 +70,7 @@
                 <th>S No.</th>
                 <th>Publication</th>
                 <th>Package/Edition</th>
-                <th>Insert</th>
+                <!-- <th>Insert</th> -->
                 <th>Publish Dates</th>
                 <th style="text-align:right;">Total Cost</th>
               </tr>
@@ -79,17 +80,17 @@
                 <td>1.</td>
                 <td>{{paper.paper_name}}</td>
                 <td>{{edition.edition_name}}</td>
-                <td>-</td>
-                <td>15/06/2018</td>
+                <!-- <td>-</td> -->
+                <td>{{selecteddates}}</td>
                 <td style="text-align:right;">Rs. {{getAmount()}}</td>
               </tr>
               
               <tr>
-                <td colspan="5" style="font-weight:600;text-align:right;color:#333;">GST (5%)</td>
+                <td colspan="4" style="font-weight:600;text-align:right;color:#333;">GST (5%)</td>
                 <td style="text-align:right;">Rs. {{getGst()}}</td>
               </tr>
               <tr>
-                <td colspan="5" style="font-weight:600;text-align:right;color:#333;">Total Cost </td>
+                <td colspan="4" style="font-weight:600;text-align:right;color:#333;">Total Cost </td>
                 <td style="text-align:right;">Rs .{{getTotal()}}</td>
               </tr>
             </tbody>

@@ -23,17 +23,40 @@ export class AppComponent {
     this.getFooLanguages();
   } 
    setLocalStorage(key:string,value){
+    //  console.log(typeof value);   
     if(typeof value !=="string"){
       value=JSON.stringify(value);
     }
     localStorage.setItem(key,value);
   }
+  isJson(item) {
+    item = typeof item !== "string"
+        ? JSON.stringify(item)
+        : item;
+
+    try {
+        item = JSON.parse(item);
+    } catch (e) {
+        return false;
+    }
+
+    if (typeof item === "object" && item !== null) {
+        return true;
+    }
+
+    return false;
+}
   getLocalStorage(key:string){
     if(localStorage.getItem(key)!==null){
-      
-      return JSON.parse(localStorage.getItem(key));
-      
-      
+      if(this.isJson(localStorage.getItem(key)))
+      {
+        return JSON.parse(localStorage.getItem(key));
+        
+      }else{
+        return localStorage.getItem(key);
+        
+      }
+
     }else{
       return "";
     }

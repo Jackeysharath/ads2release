@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { AppComponent } from "src/app/app.component";
 import { ApiService } from "src/app/common/api.service";
 import { HomeComponent } from '../home/home.component';
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 
 @Component({
   selector: 'app-categorysel',
@@ -10,6 +12,9 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./categorysel.component.css']
 })
 export class CategoryselComponent implements OnInit {
+  targetby: any="paper";
+  state: any;
+  states: any;
   categories: any;
   edition: any;
   editions: any;
@@ -19,13 +24,34 @@ export class CategoryselComponent implements OnInit {
   selType: any;
   paperTypes: any;
   seleditions: any;
+  @ViewChild("tarbypap", {read: ElementRef}) tarbypap: ElementRef;
+  @ViewChild("tarbyloc", {read: ElementRef}) tarbyloc: ElementRef;
 
   constructor(private route:Router,private app:AppComponent,private _api:ApiService,private home:HomeComponent) { }
 
   ngOnInit() {
     this.getLocals();
     this.getOuters();
+    this.targetbycheck();
     }
+    targetbycheck(){
+    if(this.app.getLocalStorage("targetby")){
+      this.targetby=this.app.getLocalStorage("targetby");
+    }
+      // debugger;
+      if(this.targetby=="paper"){
+        this.tarbypap.nativeElement.click();
+      }else if(this.targetby=="location"){
+        this.tarbyloc.nativeElement.click();
+      }
+    }
+    setTargetby(val:string){
+      // debugger;
+      this.app.setLocalStorage("targetby",val);
+      this.targetbycheck();
+    }
+
+
   getLocals(){
     this.selType=this.app.getLocalStorage("type_id");
     // console.log(this.selType);
@@ -39,6 +65,7 @@ export class CategoryselComponent implements OnInit {
   }
   getOuters(){
     this.getNewspapers();
+    this.getStates();
   }
   setTypeById(id:number){
     this._api.POST('getPaperTypes', {}).subscribe(data =>{
@@ -76,12 +103,48 @@ i++;
     });
 
   }
+  getStates(){
+    this._api.POST('getStates', {}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.states=dt.data;
+      }
+     
+    });
+  }
   getEditions(){
     this._api.POST('getEditions', {}).subscribe(data =>{
       this.editions=data.editions;
     });
   }
-  getNewpaperBasedonEdition(){}
+  getEditionByState(id:any){
+    this.state=id;
+    this.app.setLocalStorage("state",id);
+    this._api.POST('getEditionsByState', {"state_id":this.state}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.seleditions=dt.data;
+      }
+      // this.seleditions=data.editions;
+    });
+  }
+  getCategoriesOnSelectionLocation(edition:any){
+    edition=this.getEditionById(edition);
+    // console.log(edition);
+    this.edition=edition;
+    this.app.setLocalStorage("edition",this.edition);
+    this._api.POST('getCategories', {"paper_id":"","edition_id":this.edition.id}).subscribe(data =>{
+      
+      if(data.status==1){
+        let dt=JSON.parse(data.json);
+        this.categories=dt.data;
+      }
+      
+    });
+
+  }
   getPaperById(id:any){
     let a=0;
     this.papers.forEach(element => {
@@ -128,6 +191,8 @@ i++;
       if(data.status==1){
         let dt=JSON.parse(data.json);
         this.categories=dt.data;
+      }else{
+        this.categories=[];
       }
       
     });

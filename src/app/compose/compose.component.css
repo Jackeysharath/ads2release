@@ -21,6 +21,15 @@
     color:#FFF;
 }
 #edit-body .fr-element, #preview-body{
-    background:#0520aa;
-    color:#FFF;
+    background:#ffffff;
+    color:#282727;
+}
+.packages-container{
+    min-height: 300px !important;
+}
+
+#preview-container.ct{
+	/* border:solid 0px #555 ; */
+	margin:0px auto;
+	
 }

@@ -18,6 +18,7 @@ export class CatselectedComponent implements OnInit {
   category: any;
   paper: any;
   selType: any;
+  packagesshow:boolean=false;
 
   constructor(private route:Router,private app:AppComponent,private _api:ApiService) { }
 
@@ -30,12 +31,32 @@ export class CatselectedComponent implements OnInit {
     this.paper=this.app.getLocalStorage("paper");
     this.category=this.app.getLocalStorage("category");
     this.edition=this.app.getLocalStorage("edition");
-    this.target_by=this.app.getLocalStorage("target_by");
+    this.target_by=this.app.getLocalStorage("targetby");
+    if(this.target_by=='location'){
+      this.getPapersByLocation();
+    }else{
+
+    }
+  }
+  getPapersByLocation(){
+    this._api.POST('getPapersByLocation', {"category_id":this.category.id,"edition_id":this.edition.id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.locpapers=dt.data;
+      }
+      
+    });
   }
   getOuters(){
     this.getNewspapers();
     this.getEditions();
-    this.getPrices();
+    if(this.target_by=='location'){
+      // this.getPapersByLocation();
+    }else{
+      this.getPrices();  
+    }
+    
   }
   getNewspapers(){
     this._api.POST('getPapers', {"type_id":this.selType.id}).subscribe(data =>{
@@ -68,11 +89,17 @@ export class CatselectedComponent implements OnInit {
       // this.editions=data.editions;
     });
   }
+  setPaper(item:any){
+    this.app.setLocalStorage("paper",item);
+    this.getLocals();
+    this.getPrices();
+  }
   getPrices(){
     this._api.POST('getPricesList', {"type_id":this.selType.id,"paper_id":this.paper.id,"category_id":this.category.id,"edition_id":this.edition.id}).subscribe(data =>{
       if(data.status==1){
         
         let dt=JSON.parse(data.json);
+        this.packagesshow=true;
         this.pricesList=dt.data;
       }
       // this.pricesList=data.pricesList;

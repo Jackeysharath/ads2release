@@ -65,6 +65,9 @@ export class DateselComponent implements OnInit,AfterViewInit {
 		});
   }
   getCompose(){
+    let selectedates=$("input#altField").val();
+    // debugger;
+    this.app.setLocalStorage("selecteddates",selectedates);
     this.route.navigate(['./compose']);
   }
   noofdays(act){

@@ -9,6 +9,8 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./bookingsummary.component.css']
 })
 export class BookingsummaryComponent implements OnInit {
+  selecteddates: any;
+  addcontent: any;
 
   finalselection: any;
   paper: any;
@@ -28,6 +30,9 @@ export class BookingsummaryComponent implements OnInit {
     this.edition=this.app.getLocalStorage("edition");
     this.target_by=this.app.getLocalStorage("target_by");
     this.finalselection=this.app.getLocalStorage("finalselection");
+    this.addcontent=this.app.getLocalStorage("addcontent");
+    this.selecteddates=this.app.getLocalStorage("selecteddates");
+    
   }
   getAmount(){
     return this.finalselection.amount;
