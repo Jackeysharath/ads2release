@@ -26,10 +26,10 @@
   </div>
   <!-- ABOUT -->
   <section class="container">
-    <div class="heading mt30">
+    <div class="heading mt30" *ngIf="(selectedTemplate==1||selectedTemplate==2)">
       <h4><i class="ion ion-person"></i>Select Display Type</h4>
     </div>	
-    <div class="row">
+    <div class="row"  *ngIf="(selectedTemplate==1||selectedTemplate==2)">
       <div class="col-lg-6 col-md-6 col-xs-12">
         <div class="row">
           <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
@@ -39,11 +39,11 @@
             <div class="form-group">
               <div class="m-radio-inline">
                 <label class="m-radio m-radio--bold">
-                  <input type="radio" name="color_type" value="1" onclick="javascript:colorCheck();" id="color_ad" checked> Color AD
+                  <input type="radio" name="color_type" value="1" (click)="setBwc(1)" id="color_ad" checked> Color AD
                   <span></span>
                 </label>
                 <label class="m-radio m-radio--bold">
-                  <input type="radio" name="color_type" value="2" onclick="javascript:colorCheck();" id="bw_ad"> Black & White AD
+                  <input type="radio" name="color_type" value="2" (click)="setBwc(0)"  id="bw_ad"> Black & White AD
                   <span></span>
                 </label>
               </div>
@@ -52,85 +52,491 @@
         </div>
       </div>
     </div>
-    <label class="col-bold-label">Select an AD Template from below :</label>
-    <div class="row" id="color_layout_container">
-      
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="javascript:void(0)" (click)="selectTemplateType()" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout1_color.jpg" class=""/>
-              
+    <label class="col-bold-label"  *ngIf="(selectedTemplate==1||selectedTemplate==2)">Select an AD Template from below :</label>
+    <div id="singlecol"  *ngIf="selectedTemplate==1">
+      <div class="row" id="color_layout_container" *ngIf="cbw==1">
+        
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="javascript:void(0)" (click)="selectTemplateType()" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout1_color.jpg" class=""/>
+                
+              </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout2_color.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout3_color.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout4_color.jpg" class=""/>
+                
+              </div>
             </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout2_color.jpg" class=""/>
-              
-            </div>
+      <div class="row" id="black_layout_container" *ngIf="cbw==0">
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout1_bw.jpg" class=""/>
+                
+              </div>
           </div>
-      </div>
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout3_color.jpg" class=""/>
-              
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout2_bw.jpg" class=""/>
+                
+              </div>
             </div>
-          </div>
-      </div>
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout4_color.jpg" class=""/>
-              
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout3_bw.jpg" class=""/>
+                
+              </div>
             </div>
-          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout4_bw.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
       </div>
     </div>
-    <div class="row" id="black_layout_container" style="display:none;">
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout1_bw.jpg" class=""/>
-              
+    <div id="multicol"  *ngIf="selectedTemplate==2">
+      <div class="row" id="color_layout_container" *ngIf="cbw==1">
+        
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout21_color.jpg" class=""/>
+                
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout22_color.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout23_color.jpg" class=""/>
+                
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout24_color.jpg" class=""/>
+                
+              </div>
             </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout2_bw.jpg" class=""/>
-              
-            </div>
+      <div class="row" id="black_layout_container" *ngIf="cbw==0">
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout21_bw.jpg" class=""/>
+                
+              </div>
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout22_bw.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout23_bw.jpg" class=""/>
+                
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="packages-container">
+              <div class="packages-content text-center">
+                <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
+                <img src="assets/images/layout24_bw.jpg" class=""/>
+                
+              </div>
+            </div>
+        </div>
       </div>
-      <div class="col-md-3">
-        <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout3_bw.jpg" class=""/>
-              
+    </div>
+    <div id="uploadadd"  *ngIf="selectedTemplate==3">
+      <div class="selected-section">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-4 text-resp-right">
+                <label class="col-form-label">Upload Your AD :</label> 
+              </div>
+              <div class="col-md-8">
+                <div class="">
+                  <div class="file-upload">
+                    <div class="file-select-button" id="fileName">UPLOAD AD</div>
+                    <div class="file-select-name" id="noFile">No file chosen...</div> 
+                    <input type="file" name="chooseFile" id="AttachFile">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="col-md-2 text-center">
+            <div class="upload-temp-text-or">OR</div>
+          </div>
+          <div class="col-md-4">
+            <div class="upload-temp-text">Select an AD Template From Below</div>
+          </div>
+        </div>
+    </div>	
+    
+    
+    <div class="row">
+      <div class="col-md-8">
+        <div class="packages-container">
+          <div class="packages-header">
+            Specify Your AD Details
+          </div>
+          <div class="packages-content" style="min-height:150px;">
+            <div class="row">
+              <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+                <label class="col-form-label">Select Color Mode :</label>
+              </div>
+              <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                <div class="form-group">
+                  <div class="m-radio-inline">
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="color_type" value="1" onclick="javascript:colorCheck();" id="color_ad" checked> Color AD
+                      <span></span>
+                    </label>
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="color_type" value="2" onclick="javascript:colorCheck();" id="bw_ad"> Black & White AD
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+                <label class="col-form-label">Width :</label>
+              </div>
+              <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                <div class="form-group">
+                  <div class="m-radio-inline">
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="width" value="1" id="" > 3 Cm
+                      <span></span>
+                    </label>
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="width" value="2" id=""> 6 Cm
+                      <span></span>
+                    </label>
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="width" value="3" id="" > 9 Cm
+                      <span></span>
+                    </label>
+                    <label class="m-radio m-radio--bold">
+                      <input type="radio" name="width" value="4" id=""> 12 Cm
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 text-resp-right">
+                <label class="col-form-label">Height :</label>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <input type="text" name="height" class="form-control" id="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="packages-container">
-            <div class="packages-content text-center">
-              <div class="edit_btn"><a href="#" class="btn btn-xs btn-round btn-warning">Edit This Layout</a></div>
-              <img src="assets/images/layout4_bw.jpg" class=""/>
-              
-            </div>
+          <div class="packages-header">
+            AD Cost
           </div>
+          <div class="packages-content" style="min-height:150px;">
+            <p>Rs. 300/Sqcm</p>
+            <p>Min AD Size 3cm X 5cm</p>
+            <p>Min AD Cost Rs. 4500</p>
+            <p>News Paper : Times of India</p>
+            <p>Edition : AndhraPradesh</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        <div class="packages-container">
+          <div class="packages-header">
+            Kindly Note
+          </div>
+          <div class="packages-content" style="min-height:150px;">
+            <ul>
+                              <li>Maximum Height - 52cm</li>
+                              <li>You can upload both single &amp; double column Ads. Size your ad to the measurements of the purchased ad space.</li>
+                              <li>Ads are accepted within the height and width limits of the ad size you purchased as set by the publisher.</li>
+                              <li>If you do not purchase a color ad placement your ad will run in grayscale. Images and ads submitted in color will be converted to grayscale.</li>
+                              <li> If you purchase a color ad placement,  All color ads should be submitted in CMYK. </li>
+                              <li>Only PDF, EPS, TIFF (Portable Document Format) files are accepted. </li>
+                              <li>PDF files should be exported with at least 300 DPI (dots per inch) resolution.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 pull-right text-right">
+        <div class="form-group">
+          <a href="#" class="btn btn-xs btn-round btn-primary">Make Payment</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="expadvice" *ngIf="selectedTemplate==4">
+      <div class="heading mt30">
+				<h4><i class="ion ion-person"></i>Request Expert Assistance</h4>
+			</div>	
+			<div class="row">
+				<div class="col-md-8">
+					<div class="expert_assist_container">
+						<div class="row">
+							<div class="col-md-4 text-right">
+								<label class="col-form-label">Show Me AD Design For</label>
+							</div>
+							<div class="col-md-8">				
+								<div class="form-group">
+									<select class="form-control">
+										<option value="default">----Please Select----</option>
+										<option>Matrimonial</option>
+										<option>Property</option>
+										<option>Business</option>
+										<option>Rent</option>
+										<option>Astrology</option>
+										<option>Vehicals</option>
+										<option>Education</option>
+										<option>Computers</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="ads-design-content">
+									<img src="assets/images/addesign1.jpg" alt="" />
+								</div>
+								<label class="m-checkbox m-checkbox-outline">
+									<input type="checkbox"> Select
+                                    <span></span>
+                                </label>
+							</div>
+							<div class="col-md-4">
+								<div class="ads-design-content">
+									<img src="assets/images/addesign2.jpg" alt="" />
+								</div>
+								<label class="m-checkbox m-checkbox-outline">
+									<input type="checkbox"> Select
+                                    <span></span>
+                                </label>
+							</div>
+							<div class="col-md-4">
+								<div class="ads-design-content">
+									<img src="assets/images/addesign3.jpg" alt="" />
+								</div>
+								<label class="m-checkbox m-checkbox-outline">
+									<input type="checkbox"> Select
+                                    <span></span>
+                                </label>
+							</div>
+						</div>
+					</div>
+					<div class="expert_assist_container">
+						<div class="row">
+							<div class="col-md-4 text-right">
+								<label class="col-form-label">Upload Your AD Content :</label>
+							</div>
+							<div class="col-md-8">				
+								<div class="file-upload">
+											<div class="file-select-button" id="fileName">Upload</div>
+											<div class="file-select-name" id="noFile">No file chosen...</div> 
+											<input type="file" name="chooseFile" id="AttachFile">
+								</div>
+							</div>
+						</div>
+						<div class="or-text">OR</div>
+						<div class="row">
+							<div class="col-md-4 text-right">
+								<label class="col-form-label">Write Your AD Content :</label>
+							</div>
+							<div class="col-md-8">				
+								<textarea class="form-control" name="" ></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="expert_assist_container">
+						<div class="row">
+							<div class="col-md-4 text-right">
+								<label class="col-form-label">Upload Your Header Image :</label>
+							</div>
+							<div class="col-md-8">				
+								<div class="form-group">
+									<div class="file-upload">
+											<div class="file-select-button" id="fileName">Upload</div>
+											<div class="file-select-name" id="noFile">No file chosen...</div> 
+											<input type="file" name="chooseFile" id="AttachFile">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 text-right">
+								<label class="col-form-label">Upload Your Footer Image :</label>
+							</div>
+							<div class="col-md-8">	
+								<div class="form-group">
+									<div class="file-upload">
+											<div class="file-select-button" id="fileName">Upload</div>
+											<div class="file-select-name" id="noFile">No file chosen...</div> 
+											<input type="file" name="chooseFile" id="AttachFile">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="packages-container">
+							<div class="packages-header">
+								How the Design Works :
+							</div>
+							<div class="packages-content" >
+								<ul>
+									<li>Select category with specific templates</li>
+									<li>Select category with specific templates</li>
+									<li>Select category with specific templates</li>
+									<li>Select category with specific templates</li>
+									<li>Select category with specific templates</li>
+								</ul>
+							</div>
+						</div>
+					<div class="packages-container">
+							<div class="packages-header">
+								AD Specifications :
+							</div>
+							<div class="packages-content" >
+								<div>
+									<label class="col-form-label">Select AD Size</label>
+									<div class="row">
+										<div class="col-md-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="form-control" id="" name="" placeholder="Width"/>											
+											</div>
+										</div>
+										<div class="col-md-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="form-control" id="" name="" placeholder="Height"/>											
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<label class="col-form-label">Page Preference</label>
+									<div class="row">
+										<div class="col-md-12 col-xs-12">
+											<div class="form-group">
+												<select class="form-control">
+													<option value="default">----Please Select----</option>
+													<option>1st Page</option>
+													<option>2nd Page</option>
+													<option>3rd Page</option>
+													<option>4th Page</option>
+													<option>5th Page</option>
+												</select>										
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="estimatedcost-text">
+									Estimated Cost (Hyderabad) : Rs. 1232.00
+								</div>
+							</div>
+						</div>
+				</div>
+				
+      </div>
+    
+			
+			
+				
+				
+			
+			<div class="row">
+						<div class="col-md-2 pull-right text-right">
+							<div class="form-group">
+								<a href="#" class="btn btn-xs btn-round btn-primary">Make Payment</a>
+							</div>
+						</div>
+					</div>
+    </div>
+    
+    
+    <div class="row"  *ngIf="(selectedTemplate==1||selectedTemplate==2)">
           <div class="col-md-2 pull-left">
             <div class="form-group">
               <a href="#" class="btn btn-xs btn-round btn-primary">Back</a>

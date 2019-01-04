@@ -8,7 +8,10 @@
           <h4 class="modal-title">SAMPLE ADS</h4>
         </div>
         <div class="modal-body">
-          <p></p>
+          <div *ngFor="let item of sampleads">
+              <div class="col-md-12 " (click)="setAddBySampleAdd(item.add)" data-dismiss="modal" style="border:1px solid black;margin:2px;border-radius:5px" [innerHtml]="item.add"></div>
+          </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -301,11 +304,12 @@
               AD BOOKING SUMMURY :
             </div>
             <div class="packages-content" style="min-height:150px;">
-              <p>AD Cost : Rs. 300</p>
-              <p>Basic Price : Rs. 500</p>
-              <p>For Extra Sq cm : Rs. 150</p>
-              <p>Service Tax : Rs. 200</p>
-              <p>Total : Rs. 1150</p>
+              <p>AD Cost : Rs. {{finalselection.amount}}</p>
+              <p>For Extra Line : Rs. {{finalselection.extra_unit}}</p>
+              <p>No. of Lines : {{linelen}}</p>
+              <p >Extra Lines Charge : {{getExtraCharge()}}</p>
+              <!-- <p>Service Tax : Rs. 200</p> -->
+              <p>Total : Rs. {{getFinalCharge()}}</p>
             </div>
             <div class="packages-footer">
                 <p>AD Publishing Dates : {{selecteddates}}</p> 

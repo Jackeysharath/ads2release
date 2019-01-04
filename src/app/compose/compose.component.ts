@@ -18,6 +18,9 @@ declare var checked :any;
   styleUrls: ['./compose.component.css']
 })
 export class ComposeComponent implements OnInit,AfterViewInit {
+  sampleads: any;
+  minfreeline: any = 0;
+  finalselection: any;
   selecteddates: any;
   mystyle: any;
   instructions: any;
@@ -29,6 +32,8 @@ export class ComposeComponent implements OnInit,AfterViewInit {
   category: any;
   paper: any;
   selType: any;
+  linelen:number= 0;
+  
 
   constructor(private route:Router,private app:AppComponent,private _api:ApiService,private enhac:EnhacementService) { }
 
@@ -42,6 +47,8 @@ export class ComposeComponent implements OnInit,AfterViewInit {
     this.category=this.app.getLocalStorage("category");
     this.edition=this.app.getLocalStorage("edition");
     this.target_by=this.app.getLocalStorage("targetby");
+    this.finalselection=this.app.getLocalStorage("finalselection");
+    
     this.selecteddates=this.app.getLocalStorage("selecteddates");
     
   }
@@ -53,6 +60,7 @@ if(this.selType.id==1){
   this.getEnhancements(this.paper.id,this.category.id,1);
   this.getInstructions(this.selType.id,this.paper.id,this.category.id,this.edition.id);
   this.getSampleAds(this.selType.id,this.paper.id,this.category.id,this.edition.id);
+  this.getMinimumValues(this.selType.id,this.paper.id,this.category.id,this.edition.id);
   
 }
 
@@ -78,6 +86,9 @@ if(this.selType.id==1){
     let ad=$("div#preview-body.ct").html();
     // debugger;
     this.app.setLocalStorage("addcontent",ad);
+    let amountbreakdown={"base_fare":this.finalselection.amount,"no_of_lines":this.linelen,"extralinecharge":this.finalselection.extra_unit,"extra_lines":(this.linelen-this.minfreeline)>0?(this.linelen-this.minfreeline):0,"extracharge":this.getExtraCharge(),"finalamount":this.getFinalCharge()};
+    this.app.setLocalStorage("amountbreakdown",amountbreakdown);
+    this.app.setLocalStorage("famount",this.getFinalCharge());
     this.route.navigate(['./bookingsummary']);
   }
   jqryfunctionsload(){
@@ -90,6 +101,8 @@ if(this.selType.id==1){
 });
 $('#edit-body').on('froalaEditor.contentChanged froalaEditor.initialized', function (e, editor) {
       $('#preview-body').html(editor.html.get());
+
+      //  console.log(this.linelen);
     }).froalaEditor({
   toolbarButtons: ['bold', 'italic', 'underline', 'fontFamily', 'fontSize', 'color', 'align']
 });
@@ -196,11 +209,39 @@ f.addEventListener('change', function(g) {
       if(data.status==1){
         
         let dt=JSON.parse(data.json);
-        this.instructions =dt.data;
+        this.sampleads =dt.data;
         // console.log(this.subcategories);
       }
       
     });
   }
+  getMinimumValues(type_id,paper_id,category_id,edition_id){
+    this._api.POST('getMinimumValues', {"type_id":type_id,"paper_id":paper_id,"category_id":category_id,"edition_id":edition_id}).subscribe(data =>{
+      if(data.status==1){
+        
+        let dt=JSON.parse(data.json);
+        this.minfreeline =dt.data[0].value
+        // console.log(this.subcategories);
+      }
+      
+    });
+  }
+  getExtraCharge(){
+    this.linelen= $("div#preview-body.ct").find("p").length; 
+    console.log(this.linelen);
+    return (this.linelen-this.minfreeline)>0?((this.linelen-this.minfreeline)*(this.finalselection.extra_unit)):0; //this need to be adjusted according to normal,package,scheame.
+  }
+  getFinalCharge(){
+    return this.getExtraCharge()+parseFloat(this.finalselection.amount);
+  }
+  setAddBySampleAdd(ad){
+    if(this.selType.id==1){
+      $('#edit-body').find(".fr-element.fr-view").html(ad).focus();
+      
+    }
+    
+
+  }
+  
 
 }

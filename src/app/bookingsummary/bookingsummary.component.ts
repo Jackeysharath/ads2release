@@ -9,6 +9,7 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./bookingsummary.component.css']
 })
 export class BookingsummaryComponent implements OnInit {
+  famount: any;
   selecteddates: any;
   addcontent: any;
 
@@ -18,6 +19,7 @@ export class BookingsummaryComponent implements OnInit {
   edition: any;
   target_by: any;
   selType: any;
+  gst:any=18;
   constructor(private route:Router,private app:AppComponent,private _api:ApiService) { }
 
   ngOnInit() {
@@ -32,13 +34,15 @@ export class BookingsummaryComponent implements OnInit {
     this.finalselection=this.app.getLocalStorage("finalselection");
     this.addcontent=this.app.getLocalStorage("addcontent");
     this.selecteddates=this.app.getLocalStorage("selecteddates");
+    this.famount=this.app.getLocalStorage("famount");
+    
     
   }
   getAmount(){
-    return this.finalselection.amount;
+    return this.famount;
   }
   getGst():any{
-    return parseFloat(this.getAmount())*(0.05);
+    return parseFloat(this.getAmount())*((this.gst)/100);
   }
   getTotal(){
      let tot=parseFloat(this.getAmount())+parseFloat(this.getGst());

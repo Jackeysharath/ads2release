@@ -36,28 +36,33 @@
 							<div class="row">
 								<div class="col-md-4 col-xs-4 text-center">
 									<div class="">{{selType.type_name}}</div>
-									<img src="assets/images/classified_display.png" class="cltype-img" height="80"/>
+									<img *ngIf="selType.id==1" src="assets/images/classified_text.png" class="cltype-img" height="80"/>
+									<img *ngIf="selType.id==2" src="assets/images/classified_display.png" class="cltype-img" height="80"/>
 								</div>
 								<div class="col-md-3 col-xs-4 text-center">
-									<div class="selected-category-image"><img src="assets/images/categories/recruitments_image.png"/></div>
+									<div class="selected-category-image">
+										<img *ngIf="category.image==''"  src="assets/images/categories/recruitments_image.png"/>
+										<img *ngIf="category.image!==''"  src="{{logourl}}{{category.image}}"/>
+										{{category.category_name}}
+									</div>
 								</div>
 								<div class="col-md-4 col-xs-4 text-right">
 									<div class="change-btn-container">
-										<a href="#" class="btn btn-xs btn-warning">Change Category</a>
+										<a href="javascript:void(0)" (click)="changeCat()" class="btn btn-xs btn-warning">Change Category</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div> 
 				</div>
-				<div class="row">
+				<div class="row" *ngIf="target_by=='paper'">
 					<div class="col-md-12">
 								<div class="selection-paper-container">
 									<div class="row">
 										<div class="col-md-4">
 											<label class="col-form-label">Select News Paper</label>
 											<div class="form-group">
-												<select class="form-control">
+												<select class="form-control" (change)="getEditonBasedonNewspaper($event.target.value)">
 													<option value="default">----Please Select----</option>
 													<!-- <option>Eenadu</option>
 													<option>Andhra Jyothhi</option>
@@ -71,20 +76,20 @@
 										<div class="col-md-4">
 											<label class="col-form-label">Select city</label>
 											<div class="form-group">
-												<select class="form-control">
+												<select class="form-control" (change)="setEdition($event.target.value)">
 													<option value="default">----Please Select----</option>
 													<!-- <option>Hyderabad</option>
 													<option>Vijayawada</option>
 													<option>Kakinada</option>
 													<option>Razole</option>
 													<option>Karimnagar</option> -->
-													<option *ngFor="let item of editions" (click)="getCategoriesOnSelection(item)" [selected]="edition.id==item.id" value="{{item.id}}">{{item.edition_name}}</option>
+													<option *ngFor="let item of seleditions"  [selected]="edition.id==item.id" value="{{item.id}}">{{item.edition_name}}</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="paper-image">
-												<img src="assets/images/paper1.jpg" alt="" />
+												<img src="{{getPaperLogo()}}" alt="" width="190.8px" height="72px" />
 											</div>
 										</div>
 									</div>
@@ -92,8 +97,50 @@
 							
 						</div>
 					</div>
+					<div class="row" *ngIf="target_by=='location'">
+						<div class="col-md-12">
+									<div class="selection-paper-container">
+										<div class="row">
+											<div class="col-md-4">
+												<label class="col-form-label">Select State</label>
+												<div class="form-group">
+													<select class="form-control" (change)="getEditonBasedonNewspaper($event.target.value)">
+														<option value="default">----Please Select----</option>
+														<!-- <option>Eenadu</option>
+														<option>Andhra Jyothhi</option>
+														<option>Sakshi</option>
+														<option>Deccan Chronicle</option>
+														<option>The Hindu</option> -->
+														<option *ngFor="let item of states"  [selected]="state==item.id" value="{{item.id}}">{{item.state_name}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<label class="col-form-label">Select city</label>
+												<div class="form-group">
+													<select class="form-control" (change)="setEdition($event.target.value)">
+														<option value="default">----Please Select----</option>
+														<!-- <option>Hyderabad</option>
+														<option>Vijayawada</option>
+														<option>Kakinada</option>
+														<option>Razole</option>
+														<option>Karimnagar</option> -->
+														<option *ngFor="let item of seleditions"  [selected]="edition.id==item.id" value="{{item.id}}">{{item.edition_name}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<!-- <div class="paper-image">
+													<img src="{{getPaperLogo()}}" alt="" width="190.8px" height="72px" />
+												</div> -->
+											</div>
+										</div>
+									</div>
+								
+							</div>
+						</div>
 					<!---this will be hide/show based on location or paper -->
-					<div class="packages-container" *ngIf="target_by=='location'">
+					<div class="packages-container" *ngIf="((target_by=='location')&&(edition.id!==''))">
 						<div class="packages-header">
 							Available Papers
 						</div>
@@ -101,7 +148,7 @@
 							<div class="row">
 								<div class="col-md-4" *ngFor="let item of locpapers">
 									<div class="paper-image" (click)="setPaper(item)">
-										<img src="assets/images/paper2.jpg" alt="" />
+										<img src="{{logourl}}{{item.logo}}" alt="" />
 									</div>
 								</div>
 
@@ -109,7 +156,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="packages-container" *ngIf="packagesshow">
+					<div class="packages-container" *ngIf="((packagesshow)&&(edition.id!==''))">
 						<div class="packages-header">
 							Available Packages
 						</div>
@@ -125,7 +172,7 @@
 									{{edition.copies}} copies 
 								</div>
 								<div class="col-md-2">
-									{{item.amount}}/sqcm
+									{{item.amount}}/<span *ngIf="selType.id==1">line</span><span *ngIf="selType.id==2">Sq.cm</span>
 								</div>
 								<div class="col-md-2 text-right">
 									<a href="javascript:void(0)" (click)="selectOffer(item)" class="btn btn-xs btn-round btn-success">Book Now</a>
@@ -134,14 +181,14 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row"  *ngIf="((packagesshow)&&(edition.id!==''))">
 						<div class="col-md-12">
 							<div class="heading-v1 text-center">
 								<h2 class="heading-v1-title">OR</h2>
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row"  *ngIf="((packagesshow)&&(edition.id!==''))">
 						<div class="form-group">
 						<div class="col-md-12">
 							<div class="offer-content">

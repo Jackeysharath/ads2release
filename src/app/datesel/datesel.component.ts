@@ -19,7 +19,7 @@ export class DateselComponent implements OnInit,AfterViewInit {
   category: any;
   paper: any;
   selType: any;
-  noofads:any=2;
+  noofads:any=1;
   @ViewChild('mdpdemo') mdpdemo: ElementRef;
   @ViewChild('altField') altField: ElementRef;
   

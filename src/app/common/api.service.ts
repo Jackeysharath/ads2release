@@ -16,10 +16,11 @@ export class ApiService {
     token:any=null;
     //private url:any='http://192.168.0.169:2007/api/';
     mdata:any=[];
-    public other_url:string="http://cems.medsoft.in/intgtenet";
-   private url:any='http://epanel.ads2release.in/apiservice/';
-    private url1:any='http://cems.medsoft.in/intgtenet/CemsDataRequest.asmx/GetAuthorization';
-    private ticketurl:any='https://tenetmedcorp.freshdesk.com/api/v2/tickets';
+
+    private url:any='http://localhost:1111/apiservice/'; //dev
+    public logourl:any='http://localhost:1111/assets/uploads/';
+ //  private url:any='http://epanel.ads2release.in/apiservice/'; //prod
+   //public logourl:any='http://epanel.ads2release.in/assets/uploads/'; //prod
      constructor(http: Http){
          this.http=http;
         // this.labDetails =[];
@@ -31,7 +32,7 @@ export class ApiService {
         
         var headers = new Headers();
         headers.append('Content-Type', 'x-www-form-urlencoded');
-        return this.http.get(this.url1).map(data => {
+        return this.http.get(this.url).map(data => {
           let data2= JSON.parse(this.trimxmltag(data._body));
           localStorage.setItem('req_token',this.token);
           return this.token = data2.data[0].GUID
@@ -123,7 +124,7 @@ export class ApiService {
      });
     }
     ticketsHandling(data){
-         return this.http.post(this.ticketurl,data,{
+         return this.http.post(this.url,data,{
               headers : {
                   'Content-Type' : 'application/json',
                   'Authorization':'Basic c3Jpbml2YXNAdGVuZXRtZWRjb3JwLmNvbTp0ZW5ldEAzMjE='

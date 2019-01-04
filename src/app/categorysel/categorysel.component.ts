@@ -12,7 +12,10 @@ import { ElementRef } from "@angular/core";
   styleUrls: ['./categorysel.component.css']
 })
 export class CategoryselComponent implements OnInit {
-  targetby: any="paper";
+  logourl: any;
+
+  type_id: number;
+  targetby: any = "paper";
   state: any;
   states: any;
   categories: any;
@@ -27,7 +30,9 @@ export class CategoryselComponent implements OnInit {
   @ViewChild("tarbypap", {read: ElementRef}) tarbypap: ElementRef;
   @ViewChild("tarbyloc", {read: ElementRef}) tarbyloc: ElementRef;
 
-  constructor(private route:Router,private app:AppComponent,private _api:ApiService,private home:HomeComponent) { }
+  constructor(private route:Router,private app:AppComponent,private _api:ApiService,private home:HomeComponent) {
+   this.logourl= this._api.logourl;
+   }
 
   ngOnInit() {
     this.getLocals();
@@ -41,12 +46,19 @@ export class CategoryselComponent implements OnInit {
       // debugger;
       if(this.targetby=="paper"){
         this.tarbypap.nativeElement.click();
+        
       }else if(this.targetby=="location"){
         this.tarbyloc.nativeElement.click();
+        
       }
+    }
+    intials(){
+    this.categories=[];
+
     }
     setTargetby(val:string){
       // debugger;
+      // this.app.clearLocalStorage();
       this.app.setLocalStorage("targetby",val);
       this.targetbycheck();
     }
@@ -83,6 +95,7 @@ i++;
           if(element.id==id){
             this.home.selType(element,0);
             this.getLocals();
+            this.intials();
           }
         });
       }else{
@@ -123,6 +136,7 @@ i++;
     this.app.setLocalStorage("state",id);
     this._api.POST('getEditionsByState', {"state_id":this.state}).subscribe(data =>{
       if(data.status==1){
+        this.intials();
         
         let dt=JSON.parse(data.json);
         this.seleditions=dt.data;
@@ -135,7 +149,7 @@ i++;
     // console.log(edition);
     this.edition=edition;
     this.app.setLocalStorage("edition",this.edition);
-    this._api.POST('getCategories', {"paper_id":"","edition_id":this.edition.id}).subscribe(data =>{
+    this._api.POST('getCategories', {"paper_id":"","edition_id":this.edition.id,"type_id":this.selType.id}).subscribe(data =>{
       
       if(data.status==1){
         let dt=JSON.parse(data.json);
@@ -170,23 +184,29 @@ i++;
     paper=this.getPaperById(paper);
     this.paper=paper;
     this.app.setLocalStorage("paper",this.paper);
-    this._api.POST('getEditions', {"paper_id":paper.id}).subscribe(data =>{
-      if(data.status==1){
+    // this._api.POST('getEditions', {"paper_id":paper.id}).subscribe(data =>{
+    //   if(data.status==1){
         
-        let dt=JSON.parse(data.json);
-        this.seleditions=dt.data;
-      }
+    //     let dt=JSON.parse(data.json);
+    //     this.seleditions=dt.data;
+    //   }
 
-    });
-
+    // });
+    this.getCategoriesOnSelection(null);
   }
   getCategoriesOnSelection(edition){
     // debugger;
-    edition=this.getEditionById(edition);
-    // console.log(edition);
-    this.edition=edition;
+    if(edition!==null){
+      edition=this.getEditionById(edition);
+      // console.log(edition);
+      this.edition=edition;
+     
+    }else{
+      this.edition={};
+      this.edition.id="";
+    }
     this.app.setLocalStorage("edition",this.edition);
-    this._api.POST('getCategories', {"paper_id":this.paper.id,"edition_id":this.edition.id}).subscribe(data =>{
+    this._api.POST('getCategories', {"paper_id":this.paper.id,"edition_id":this.edition.id,"type_id":this.selType.id}).subscribe(data =>{
       
       if(data.status==1){
         let dt=JSON.parse(data.json);

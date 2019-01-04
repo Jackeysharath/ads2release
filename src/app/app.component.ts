@@ -118,4 +118,7 @@ export class AppComponent {
 
     });
   }
+  clearLocalStorage(){
+    localStorage.clear();
+  }
 }

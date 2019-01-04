@@ -45,6 +45,8 @@ i++;
 
   }
   selType(id,act=1){
+    
+    this.app.clearLocalStorage();
     this.app.setLocalStorage("type_id",id);
     if(act==1)
     this.getType();
